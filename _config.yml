@@ -67,15 +67,12 @@ author:
 # If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
 social-network-links:
   rss: true
-  email: "ldc@ldom.net"
-  github: ldom
+#  email: "ldc@ldom.net"
+#  github: ldom
   twitter: ldom
 #  reddit: yourname
-#  google-plus: +DeanAttali
-  linkedin: ldomenech
-#  xing: yourname
+#  linkedin: ldomenech
 #  stackoverflow: "3943160/daattali"
-#  snapchat: deanat78
   instagram: ldom
 #  youtube: user/deanat78
 #  spotify: yourname
