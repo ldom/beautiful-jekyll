@@ -1,17 +1,18 @@
----
-layout: compress
----
-{% include helper/_1_head.html %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% include helper/_2_topbar_navigation.html %}
+  {% include head.html %}
 
-{% include helper/_3_masthead.html %}
+  <body class="page" itemscope itemtype="http://schema.org/WebPage">
 
-{{ content }}
+    {% include header.html %}
 
-{% include helper/_4_footer.html %}
-
-{% include helper/_5_footer_scripts.html %}
-
-</body>
+    <main id="main">
+      {{ content }}
+    </main>
+    <script src={{ "/assets/js/instantclick.min.js" | relative_url }}  data-no-instant></script>
+    <script data-no-instant>
+      InstantClick.init();
+    </script>
+  </body>
 </html>
