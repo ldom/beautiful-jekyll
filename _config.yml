@@ -1,7 +1,7 @@
-title: Ldom.net
+title: Ldom
 description: "Donec ullamcorper nulla non <a href="https://apple.com">metus auctor</a> fringilla."
-url: https://ldom.net
-baseurl: /
+url: "https://ldom.net"
+baseurl: "/"
 
 # markdown      : kramdown
 # highlighter   : rouge
