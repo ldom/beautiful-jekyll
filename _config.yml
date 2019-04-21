@@ -1,3 +1,5 @@
+remote_theme: phlow/simplicity
+
 title: Ldom.net
 description: "Donec ullamcorper nulla non <a href='https://apple.com'>metus auctor</a> fringilla."
 url: https://ldom.net
@@ -8,9 +10,7 @@ baseurl: "/"
 permalink: /:categories/:title/
 encoding: utf-8
 destination: _site
-lang: 'en'             # The language setting is used in /includes/header.html for html-settings
-
-remote_theme: Phlow/simplicity
+lang: en             # The language setting is used in /includes/header.html for html-settings
 
 # Frontpage-Layout-Settings
 posts_with_teaser_limit: 1     # Define how many posts should be shown with headline, teaser, image, video
@@ -87,8 +87,8 @@ msapplication_tilecolor:                '#fabb00'
 
 
 sass:
-    sass_dir: _sass
-    style: :compressed
+  sass_dir: _sass
+  style: :compressed
 
 
 # disqus_shortname:
@@ -96,25 +96,25 @@ sass:
 # google_analytics_tracking_id:
 
 socialmedia:
-    youtube: ldom17
-    github: ldom
-    twitter: ldom
-    # tumblr: motizen
-    instagram: ldom
-    # rss: # Full URL needed
+  youtube: ldom17
+  github: ldom
+  twitter: ldom
+  # tumblr: motizen
+  instagram: ldom
+  # rss: # Full URL needed
 
 plugins:
-    - jekyll-gist
-    - jekyll-sitemap
-    - jekyll-paginate
+  - jekyll-gist
+  - jekyll-sitemap
+  - jekyll-paginate
 
 # Exclude these files from your production _site
 exclude:
-    - .sass-cache
-    - Gemfile
-    - Gemfile.lock
-    - README.md
-    - INSTALL.md
+  - .sass-cache
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - INSTALL.md
 
 # Used › default.html front-matter and compress.html
 # Options › http://jch.penibelst.de
