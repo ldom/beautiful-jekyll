@@ -1,5 +1,6 @@
+---
 layout: page
-title: Page1
+title: Page 1
 navigation: true
 ---
 
