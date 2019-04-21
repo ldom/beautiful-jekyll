@@ -38,7 +38,7 @@ encoding      : utf-8
 destination   : _site
 lang          : 'en'             # The language setting is used in /includes/header.html for html-settings
 
-remote_theme  : Phlow/simplicity
+remote_theme: Phlow/simplicity
 
 # Frontpage-Layout-Settings
 posts_with_teaser_limit  : 1     # Define how many posts should be shown with headline, teaser, image, video
