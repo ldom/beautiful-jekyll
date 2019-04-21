@@ -2,12 +2,13 @@
 layout: default
 ---
 
-<div class="wrapper">
-  <article class="post">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%d/%m/%Y" }}</p>
-    {{ content | markdownify }}
-  </article>
+<small>{{ page.date | date: "%-d %B %Y" }}</small>
+<h1>{{ page.title }}</h1>
 
-  {% include pagination.html %}
-</div>
+<p class="view">by {{ page.author | default: site.author }}</p>
+
+{{content}}
+
+{% if page.tags %}
+  <small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
+{% endif %}

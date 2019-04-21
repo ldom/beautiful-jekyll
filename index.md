@@ -1,6 +1,5 @@
 ---
-layout: home
-title: Home
+layout: default
 ---
 
-hello I'm Laurent
+Hello, I'm Laurent. 
