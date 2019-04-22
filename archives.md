@@ -1,7 +1,8 @@
 ---
 layout: page
-title: Archives
-navigation: true
+title: archives
+navigation: false
+permalink: /archives/
 ---
 
 <div class="posts">

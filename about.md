@@ -1,13 +1,12 @@
 ---
 layout: page
-title: About
+title: about
 navigation: true
+permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Hi, I'm Laurent. I'm French and Canadian. 
 
-You can find the source code for the Jekyll new theme at:
-[overkyll](https://github.com/bertrandkeller/overkyll-jekyll-theme)
+I like to <a href='/hiking/'>hike</a>, <a href='/flying/'>fly</a> and ride my MTB or my <a href='/motorcycling/'>motorcycles</a>.
 
-You can find the source code for Jekyll at
-[jekyll](https://github.com/jekyll/jekyll)
+ 

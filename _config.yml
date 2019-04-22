@@ -17,7 +17,7 @@ title: Ldom.net
 email: ldc@ldom.net
 description: > # this means to ignore newlines until "baseurl:"
     mauris condimentum nibh, ut fermentum massa justo sit amet risus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. <a href='https://google.com'>Vestibulum id</a> ligula porta felis euismod semper.
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ldom.net" # the base hostname & protocol for your site
 twitter_username: ldom
 github_username:  ldom
