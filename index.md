@@ -1,6 +1,6 @@
 ---
-layout: home
-title: home
+layout: page
+title:
 ---
 
 hello I'm Laurent
