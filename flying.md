@@ -5,4 +5,6 @@ navigation: false
 permalink: /flying/
 ---
 
-Flying trips and photos. 
+<a href='/flying/planes/'>planes I flew</a>
+
+coming up: flying trips and photos. 

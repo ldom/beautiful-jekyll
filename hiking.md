@@ -5,7 +5,7 @@ navigation: false
 permalink: /hiking/
 ---
 
-Notables hikes.
+coming up: Notables hikes and my secret trail mix recipe.
 
 
  
