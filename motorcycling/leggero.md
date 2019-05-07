@@ -9,9 +9,4 @@ Who knows what went inside my head, a few years ago I decided to transform my Du
 
 I had a lot of fun re-building it but it never really worked. So I had to part with it. A lot of fun, but I'll never do it again!
 
-{% for image in site.static_files %}
-    {% if image.path contains '/motorcycling/leggero/' %}
-![]({{ image.path }})
-    {% endif %}
-{% endfor %}
-
+{% include permalink_photos.md %}
