@@ -1,0 +1,5 @@
+- name: 'about'
+  url: '/about/'
+
+- name: 'search posts'
+  url: '/search/'
