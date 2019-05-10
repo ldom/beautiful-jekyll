@@ -3,8 +3,8 @@
 
 a,
 a:link {
-//    -webkit-transition: all .15s cubic-bezier(.33,.66,.66,1);
-//    transition: all .15s cubic-bezier(.33,.66,.66,1);
+    -webkit-transition: all .15s cubic-bezier(.33,.66,.66,1);
+    transition: all .15s cubic-bezier(.33,.66,.66,1);
     color: $ci-1;
     text-decoration: none;
     border-bottom: 2px solid $ci-1;
@@ -46,16 +46,6 @@ a:active img,
 a img { border: 0; }
 
 a img { border: none; }
-
-#content a {
-    background: $link-bg;
-    text-decoration: none;
-    border-bottom: none;
-}
-
-#content a:hover {
-    border-bottom: 2px solid $grey-color;
-}
 
 #content a img  {
     display: block; 
