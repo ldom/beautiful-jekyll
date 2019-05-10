@@ -3,7 +3,7 @@ remote_theme: phlow/simplicity
 title: Ldom.net
 description: ""
 url: https://ldom.net
-baseurl: "/"
+baseurl: ""
 
 # markdown      : kramdown
 # highlighter   : rouge
@@ -23,7 +23,7 @@ excerpt_separator: <!--more-->   # Use <!--more--> in your posts to generate an 
 #  - glowfish
 #  - legacy
 #  - yule
-color_scheme: simplicity
+color_scheme: ldom
 
 #   Choose one of the following font combinations:
 #
@@ -88,18 +88,17 @@ msapplication_tilecolor:                '#fabb00'
 
 sass:
   sass_dir: _sass
-  style: :compressed
-
+  style: compressed
 
 # disqus_shortname:
 
 # google_analytics_tracking_id:
 
 socialmedia:
-  youtube: ldom17
+  # youtube: ldom17
   github: ldom
   twitter: ldom
-  tumblr: ldom
+  # tumblr: ldom
   instagram: ldom17
   # rss: # Full URL needed
 
