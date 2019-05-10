@@ -13,6 +13,9 @@ A failed project: <a href='/motorcycling/leggero/'>my Walt Siegl Leggero</a>
 
 coming up: more photos!
 
-![a frozen C150](/assets/photos/motorcycling/bmw_r850r.jpg	)
-![a frozen C150](/assets/photos/motorcycling/husqvarna_701_enduro.jpg)
+![BMW R850R 1996](/assets/photos/motorcycling/bmw_r850r.jpg	)
+###### BMW R850R 1996
+
+![Husqvarna 701 Enduro 2019](/assets/photos/motorcycling/husqvarna_701_enduro.jpg)
+###### Husqvarna 701 Enduro 2019
 
