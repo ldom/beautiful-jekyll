@@ -30,7 +30,7 @@ description   : ''
 slogan        : ''
 
 # github pages setup
-remote_theme: phlow/simplicity
+remote_theme: Phlow/simplicity
 
 # Build settings
 url           : 'https://ldom.net'
