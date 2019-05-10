@@ -15,18 +15,18 @@ I learned flying in a Tecnam P2002 with the late (and great) Yves Perdrix. The P
 
 After I moved to Canada, I started flying with Cessnas. I did one flight on the 150 and decided it was too cramped, so I moved to 172s....
 
-![a frozen C150](/images/flying/planes/c150.jpg	)	
+![a frozen C150](/images/flying/planes/c150.jpg)
 <div class="caption">a frozen C150</div>
-![the C172 I used to go to Gaspé](/images/flying/planes/c172.jpg	)
+![the C172 I used to go to Gaspé](/images/flying/planes/c172.jpg)
 <div class="caption">the C172 I used to go to Gaspé</div>
 
-I also spent some quality time with a Piper Supercub. 
+I also spent some quality time with a Piper Supercub.
 
-![The Supercub in Brampton](/images/flying/planes/cub_left.jpg	)
+![The Supercub in Brampton](/images/flying/planes/cub_left.jpg)
 <div class="caption">The Supercub in Brampton</div>
-![Such a nice plane](/images/flying/planes/cub_right.jpg)	
+![Such a nice plane](/images/flying/planes/cub_right.jpg)
 <div class="caption">Such a nice plane</div>
-![A good old fashioned panel](/images/flying/planes/cub_panel.jpg)	
+![A good old fashioned panel](/images/flying/planes/cub_panel.jpg)
 <div class="caption">A good old fashioned panel</div>
 
 Then I jumped on the occasion to fly on a Cirrus SR20, that I shared with 5 other pilots until early 2019.
@@ -38,7 +38,7 @@ Then I jumped on the occasion to fly on a Cirrus SR20, that I shared with 5 othe
 <div class="caption">You can put 2 MTBs on the back</div>
 ![I took it to the Hudson Bay](/images/flying/planes/sr20_moosonee.jpg)
 <div class="caption">I took it to the Hudson Bay</div>
-![From the back](/images/flying/planes/sr20_tail.jpg)		
+![From the back](/images/flying/planes/sr20_tail.jpg)
 <div class="caption">From the back</div>
 ![The Cirrus at City airport](/images/flying/planes/sr20_ytz.jpg)
 <div class="caption">The Cirrus at Toronto City airport</div>

@@ -21,6 +21,6 @@ Here are my glorious LighterPack lists:
 - <a href='https://lighterpack.com/r/902jmo'>lightest setup, stove-less with a base weight of less than 4kg, yay!</a>
 - <a href='https://lighterpack.com/r/fme9dx'>full list</a>
 
-<small>This site is using Github static pages with the great <a href="https://github.com/Phlow/simplicit">Simplicity theme</a> by <a href="https://moritz.sauer.io/">Moritz "Mo" Sauer</a>, that I modified a little bit.</small>
+<small>This site is using Github static pages with the great <a href="https://github.com/Phlow/simplicity">Simplicity theme</a> by <a href="https://moritz.sauer.io/">Moritz "Mo" Sauer</a>, that I modified a little bit.</small>
 
 <small>All contents are copyright © 2000-2019 Laurent Domenech-Cabaud and licensed under the <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>CC BY-NC-SA 4.0 license</a>.</small>
