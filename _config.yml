@@ -217,11 +217,11 @@ sass:
 # _/includes/_4_footer.html.
 
 socialmedia:
-    youtube: ldom
+    # youtube: ldom
     github: ldom
     twitter: ldom
     # soundcloud: phlow
-    # tumblr: motizen
+    tumblr: ldom
     instagram: ldom17
     # rss: # Full URL needed
 

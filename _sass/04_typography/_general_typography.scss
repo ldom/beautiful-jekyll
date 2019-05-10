@@ -30,14 +30,14 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: $font-size-h1;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: $font-weight-bold;
   letter-spacing: 1px;
   margin-top: 0;
 }
 h2 {
   font-size: $font-size-h2;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 1px;
   margin-top: 2em;
 }
@@ -109,7 +109,7 @@ figure {
 
 figcaption {
   color: $grey-color-light;
-  font-size: $font-size-small;
+  font-size: $font-size-xxsmall;
   padding-top: .25em;
   text-align: right;
 
@@ -129,8 +129,17 @@ figcaption {
   padding-right: .5em;
   text-align: right;
   color: $grey-color-light;
-  font-size: $font-size-small;
+  font-size: $font-size-xsmall;
   padding-top: .25em;
+}
+
+div.caption {
+  color: grey;
+  font-size: $font-size-xsmall;
+  text-align: right;
+  position: relative;
+  top: -1.5em;
+  right: 0.4em;
 }
 
 

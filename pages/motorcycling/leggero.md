@@ -9,4 +9,4 @@ Who knows what went inside my head, a few years ago I decided to transform my Du
 
 I had a lot of fun re-building it but it never really worked. So I had to part with it. A lot of fun, but I'll never do it again!
 
-{% include permalink_photos_the_rest.md %}
+{% include permalink_all_photos.md %}
