@@ -3,10 +3,10 @@
   <channel>
     <title>Ldom.net – </title>
     <description></description>
-    <link>https://ldom.net/</link>
-    <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 11 May 2019 11:41:12 +0000</pubDate>
-    <lastBuildDate>Sat, 11 May 2019 11:41:12 +0000</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 10 May 2019 19:42:54 -0400</pubDate>
+    <lastBuildDate>Fri, 10 May 2019 19:42:54 -0400</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -15,11 +15,11 @@
 
 &lt;!--more--&gt;
 
-&lt;p&gt;Integer float etc&lt;/p&gt;
+&lt;p&gt;Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean lacinia bibendum nulla sed consectetur. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
-        <link>https://ldom.net/post-simple/</link>
-        <guid isPermaLink="true">https://ldom.net/post-simple/</guid>
+        <pubDate>Fri, 10 May 2019 00:00:00 -0400</pubDate>
+        <link>http://localhost:4000/post-simple/</link>
+        <guid isPermaLink="true">http://localhost:4000/post-simple/</guid>
         
         
       </item>
