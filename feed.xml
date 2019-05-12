@@ -5,21 +5,106 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 11 May 2019 12:28:22 +0000</pubDate>
-    <lastBuildDate>Sat, 11 May 2019 12:28:22 +0000</lastBuildDate>
+    <pubDate>Sun, 12 May 2019 02:37:12 +0000</pubDate>
+    <lastBuildDate>Sun, 12 May 2019 02:37:12 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
-        <title>test</title>
-        <description>&lt;p&gt;Hello&lt;/p&gt;
+        <title>How to use a CI (CodeShip) to deploy a theme that won't build on Github pages</title>
+        <description>&lt;p&gt;Github pages is a nice and free way to host a web site with static pages. It also supports &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; themes, which is great when you want to make things easier to edit and post.&lt;/p&gt;
+
+&lt;p&gt;Github pages has a bunch of themes ready to be used and they also support any Jekyll theme hosted on a public repository on github.com. You just have to use &lt;code class=&quot;highlighter-rouge&quot;&gt;remote_theme&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;theme&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;__config.yml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;However, sometimes the theme that you have chosen builds without errors locally but doesn’t build when Github tries to do it. And then the error message is everything but helpful.&lt;/p&gt;
+
+&lt;p&gt;Locally you get this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll doctor &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; _config.yml
+Configuration file: _config.yml
+  Your &lt;span class=&quot;nb&quot;&gt;test &lt;/span&gt;results are &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt; Everything looks fine.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;And when Github builds it, you get this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;The page build failed &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;the master branch with the following error:
+
+Page build failed. For more information, see https://help.github.com/en/articles/troubleshooting-github-pages-builds.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;As you can see &lt;code class=&quot;highlighter-rouge&quot;&gt;Page build failed.&lt;/code&gt; is not very useful. After hours trying to find the potential errors that they mention in the troubleshooting page, I gave up and went for a different solution.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
-&lt;p&gt;Integer float etc&lt;/p&gt;
+&lt;p&gt;The solution is to use a second repository (in my case: &lt;code class=&quot;highlighter-rouge&quot;&gt;ldom-src&lt;/code&gt;) to host the source files with the theme. These are the files you were putting on the original repository for the github pages (in my case: &lt;code class=&quot;highlighter-rouge&quot;&gt;ldom&lt;/code&gt;). Then setup a CI server (Continuous Integration) to build the static files every time you push to the &lt;code class=&quot;highlighter-rouge&quot;&gt;-src&lt;/code&gt; repository and push the static file to the github pages repository.&lt;/p&gt;
+
+&lt;p&gt;Of course, you can put together the CI server yourself, using Jenkins for example, but it’s easier when you don’t have to manage a server for that. CodeShip is a CI service (I have no affiliation with them) that offers a free account limited to 100 builds per month (which is plenty for a personal site that you’ll update 30 times max per month).&lt;/p&gt;
+
+&lt;p&gt;Here is how you set it up and the scripts to use:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Go to &lt;a href=&quot;https://codeship.com&quot;&gt;https://codeship.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Sign up for the free tier.&lt;/li&gt;
+  &lt;li&gt;Create a new project.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In the Setup Commands tab, select “I want to create my own custom commands” and use:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;bundle &lt;span class=&quot;nb&quot;&gt;install
+&lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; _config.yml&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In the Setup Commands text area, use:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nv&quot;&gt;REMOTE_REPOSITORY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REMOTE_REPOSITORY&lt;/span&gt;:?&lt;span class=&quot;s1&quot;&gt;'You need to configure the REMOTE_REPOSITORY environment variable!'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;REMOTE_BRANCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REMOTE_BRANCH&lt;/span&gt;:?&lt;span class=&quot;s1&quot;&gt;'You need to configure the REMOTE_BRANCH environment variable!'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt;
+git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.email &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;your email&amp;gt;&quot;&lt;/span&gt;
+git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.name &lt;span class=&quot;s2&quot;&gt;&quot;&amp;lt;your name&amp;gt; (codeship)&quot;&lt;/span&gt;
+git clone &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REMOTE_REPOSITORY&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; _tmp &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REMOTE_BRANCH&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; _site/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; _tmp/
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;_tmp
+git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+git status
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;new build&quot;&lt;/span&gt;
+git push origin master&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In the Environment tab, create 2 environment variables (to be used in the script above):&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;REMOTE_REPOSITORY&lt;/code&gt;: put the address of the destination repository, the one for the static Github pages, eg. &lt;code class=&quot;highlighter-rouge&quot;&gt;git@github.com:ldom/ldom.git&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;REMOTE_BRANCH&lt;/code&gt;: put &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The last step is to configure CodeShip and Github to allow the deploy script to push (write) to the destination repository.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This is described on this page: &lt;a href=&quot;https://documentation.codeship.com/basic/builds-and-configuration/access-to-other-repositories/#sts=The%20Machine%20User%20Solution&quot;&gt;https://documentation.codeship.com/basic/builds-and-configuration/access-to-other-repositories/#sts=The%20Machine%20User%20Solution&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I recommend using the “Machine User” solution. 
+It involves:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;creating a new github.com user and&lt;/li&gt;
+  &lt;li&gt;give it access to the destination repository (by inviting it as a collaborator in the destination repository),&lt;/li&gt;
+  &lt;li&gt;then you have to remove the key from the Deploy section under the destination repository (not your user settings, but the repository settings).&lt;/li&gt;
+  &lt;li&gt;At last, you need to put that key (that has to be copied from General tab of the Project Settings in CodeShip) as a new key on the “Machine User” github account. (Note that if you don’t remove it first from the Deploy settings of the destination repository, you won’t be able to add that key to the “Machine User” keys).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once all of this is done, you’ll enjoy a full automated (and free) system where you just have to push to the &lt;code class=&quot;highlighter-rouge&quot;&gt;-src&lt;/code&gt; repository for everything to be built and deployed to Github pages!&lt;/p&gt;
 </description>
         <pubDate>Fri, 10 May 2019 00:00:00 +0000</pubDate>
-        <link>https://ldom.net/post-simple/</link>
-        <guid isPermaLink="true">https://ldom.net/post-simple/</guid>
+        <link>https://ldom.net/ci-for-github-pages/</link>
+        <guid isPermaLink="true">https://ldom.net/ci-for-github-pages/</guid>
         
         
       </item>

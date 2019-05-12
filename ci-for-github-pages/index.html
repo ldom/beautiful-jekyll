@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How to use a CI (CodeShip) to deploy a theme that won&#39;t build on Github pages</title>
+
+  <link rel="stylesheet" href="https://ldom.net/assets/css/simplicity.css">
+  <link rel="alternate" type="application/rss+xml" title="Ldom.net" href="https://ldom.net/feed.xml">
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link type="text/plain" rel="author" href="https://ldom.net/humans.txt">
+
+  <!-- Search Engine Optimization -->
+<meta name="description" content="Github pages is a nice and free way to host a web site with static pages. It also supports Jekyll themes, which is great when you want to make things easier to edit and post.
+
+Github pages has a bunch of themes ready to be used and they also support any Jekyll theme hosted on a public repository on github.com. You just have to use remote_theme instead of theme in the __config.yml file.
+
+However, sometimes the theme that you have chosen builds without errors locally but doesn’t build when Github tries to do it. And then the error message is everything but helpful.
+
+Locally you get this:
+
+$ bundle exec jekyll doctor --config _config.yml
+Configuration file: _config.yml
+  Your test results are in. Everything looks fine.
+
+And when Github builds it, you get this:
+
+The page build failed for the master branch with the following error:
+
+Page build failed. For more information, see https://help.github.com/en/articles/troubleshooting-github-pages-builds.
+
+As you can see Page build failed. is not very useful. After hours trying to find the potential errors that they mention in the troubleshooting page, I gave up and went for a different solution.">
+
+
+
+
+
+<link rel="canonical" href="https://ldom.net/ci-for-github-pages/">
+
+
+    <!-- Facebook Open Graph -->
+  <meta property="og:title" content="How to use a CI (CodeShip) to deploy a theme that won&#39;t build on Github pages">
+  <meta property="og:description" content="Github pages is a nice and free way to host a web site with static pages. It also supports Jekyll themes, which is great when you want to make things easier to edit and post.
+
+Github pages has a bunch of themes ready to be used and they also support any Jekyll theme hosted on a public repository on github.com. You just have to use remote_theme instead of theme in the __config.yml file.
+
+However, sometimes the theme that you have chosen builds without errors locally but doesn’t build when Github tries to do it. And then the error message is everything but helpful.
+
+Locally you get this:
+
+$ bundle exec jekyll doctor --config _config.yml
+Configuration file: _config.yml
+  Your test results are in. Everything looks fine.
+
+And when Github builds it, you get this:
+
+The page build failed for the master branch with the following error:
+
+Page build failed. For more information, see https://help.github.com/en/articles/troubleshooting-github-pages-builds.
+
+As you can see Page build failed. is not very useful. After hours trying to find the potential errors that they mention in the troubleshooting page, I gave up and went for a different solution.">
+  <meta property="og:locale" content="en_EN">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ldom.net/ci-for-github-pages/">
+  <meta property="og:site_name" content="Ldom.net">
+  
+  
+
+  
+    <!-- More › https://dev.twitter.com/cards/overview -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="ldom">
+<meta name="twitter:creator" content="ldom">
+<meta name="twitter:title" content="How to use a CI (CodeShip) to deploy a theme that won&#39;t build on Github pages">
+<meta name="twitter:description" content="Github pages is a nice and free way to host a web site with static pages. It also supports Jekyll themes, which is great when you want to make things easier to edit and post.
+
+Github pages has a bunch of themes ready to be used and they also support any Jekyll theme hosted on a public repository on github.com. You just have to use remote_theme instead of theme in the __config.yml file.
+
+However, sometimes the theme that you have chosen builds without errors locally but doesn’t build when Github tries to do it. And then the error message is everything but helpful.
+
+Locally you get this:
+
+$ bundle exec jekyll doctor --config _config.yml
+Configuration file: _config.yml
+  Your test results are in. Everything looks fine.
+
+And when Github builds it, you get this:
+
+The page build failed for the master branch with the following error:
+
+Page build failed. For more information, see https://help.github.com/en/articles/troubleshooting-github-pages-builds.
+
+As you can see Page build failed. is not very useful. After hours trying to find the potential errors that they mention in the troubleshooting page, I gave up and went for a different solution.">
+
+
+  
+
+  
+  <link rel="icon" sizes="32x32" href="https://ldom.net/assets/img/favicon-32x32.png" />
+  <link rel="icon" sizes="192x192" href="https://ldom.net/assets/img/touch-icon-192x192.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://ldom.net/assets/img/apple-touch-icon-180x180-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://ldom.net/assets/img/apple-touch-icon-152x152-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ldom.net/assets/img/apple-touch-icon-144x144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://ldom.net/assets/img/apple-touch-icon-120x120-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://ldom.net/assets/img/apple-touch-icon-114x114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://ldom.net/assets/img/apple-touch-icon-76x76-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://ldom.net/assets/img/apple-touch-icon-72x72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="https://ldom.net/assets/img/apple-touch-icon-precomposed.png" />
+  <meta name="msapplication-TileImage" content="https://ldom.net/assets/img/msapplication_tileimage.png" />
+  <meta name="msapplication-TileColor" content="#fabb00" />
+
+  
+
+</head>
+<body id="top-of-page" class="">
+
+
+
+<nav id="tnav" class="tnav-horizontal">
+  <ul class="tnav-list">
+
+    <li id="tnav-logo" class="tnav-item"><a href="https://ldom.net/" accesskey="1">Ldom.net</a></li>
+
+    <li id="tnav-search" class="tnav-item"><a href="https://ldom.net/search/"><svg class="nav-icon" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg></a></li>
+    <li id="tnav-work" class="tnav-item"><a href="https://ldom.net/work/">work</a></li>
+    <li id="tnav-leisure" class="tnav-item"><a href="https://ldom.net/leisure/">leisure</a></li>
+
+  </ul>
+</nav>
+
+
+
+
+
+	<header id="masthead" class="header-image">
+		
+			<figure>
+				<div style="background-image: url('https://ldom.net/images/headers/josh-sorenson-1242440-unsplash.jpg');"></div>
+				
+				<figcaption>
+					<a href="https://unsplash.com/@joshsorenson" target="_blank">Photo by Josh Sorenson</a>
+				</figcaption>
+				
+			</figure>
+		
+	</header>
+
+
+<main role="main" id="content" class="row">
+  <div class="medium-8 medium-centered columns">
+    <article itemscope itemtype="http://schema.org/Article">
+      <meta content="" itemprop="inLanguage" />
+      <header>
+
+        
+        
+
+
+        
+
+
+
+        
+
+
+        
+
+
+        <h1 itemprop="name headline">How to use a CI (CodeShip) to deploy a theme that won't build on Github pages</h1>
+      </header>
+
+
+      <div class="main-content" itemprop="articleSection">
+        
+        <p>Github pages is a nice and free way to host a web site with static pages. It also supports <a href="https://jekyllrb.com/">Jekyll</a> themes, which is great when you want to make things easier to edit and post.</p>
+
+<p>Github pages has a bunch of themes ready to be used and they also support any Jekyll theme hosted on a public repository on github.com. You just have to use <code class="highlighter-rouge">remote_theme</code> instead of <code class="highlighter-rouge">theme</code> in the <code class="highlighter-rouge">__config.yml</code> file.</p>
+
+<p>However, sometimes the theme that you have chosen builds without errors locally but doesn’t build when Github tries to do it. And then the error message is everything but helpful.</p>
+
+<p>Locally you get this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>bundle <span class="nb">exec </span>jekyll doctor <span class="nt">--config</span> _config.yml
+Configuration file: _config.yml
+  Your <span class="nb">test </span>results are <span class="k">in</span><span class="nb">.</span> Everything looks fine.</code></pre></figure>
+
+<p>And when Github builds it, you get this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">The page build failed <span class="k">for </span>the master branch with the following error:
+
+Page build failed. For more information, see https://help.github.com/en/articles/troubleshooting-github-pages-builds.</code></pre></figure>
+
+<p>As you can see <code class="highlighter-rouge">Page build failed.</code> is not very useful. After hours trying to find the potential errors that they mention in the troubleshooting page, I gave up and went for a different solution.</p>
+
+<!--more-->
+
+<p>The solution is to use a second repository (in my case: <code class="highlighter-rouge">ldom-src</code>) to host the source files with the theme. These are the files you were putting on the original repository for the github pages (in my case: <code class="highlighter-rouge">ldom</code>). Then setup a CI server (Continuous Integration) to build the static files every time you push to the <code class="highlighter-rouge">-src</code> repository and push the static file to the github pages repository.</p>
+
+<p>Of course, you can put together the CI server yourself, using Jenkins for example, but it’s easier when you don’t have to manage a server for that. CodeShip is a CI service (I have no affiliation with them) that offers a free account limited to 100 builds per month (which is plenty for a personal site that you’ll update 30 times max per month).</p>
+
+<p>Here is how you set it up and the scripts to use:</p>
+
+<ol>
+  <li>Go to <a href="https://codeship.com">https://codeship.com</a></li>
+  <li>Sign up for the free tier.</li>
+  <li>Create a new project.</li>
+</ol>
+
+<p>In the Setup Commands tab, select “I want to create my own custom commands” and use:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="code"><pre>bundle <span class="nb">install
+</span>bundle <span class="nb">exec </span>jekyll build <span class="nt">--config</span> _config.yml</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>In the Setup Commands text area, use:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="nv">REMOTE_REPOSITORY</span><span class="o">=</span><span class="k">${</span><span class="nv">REMOTE_REPOSITORY</span>:?<span class="s1">'You need to configure the REMOTE_REPOSITORY environment variable!'</span><span class="k">}</span>
+<span class="nv">REMOTE_BRANCH</span><span class="o">=</span><span class="k">${</span><span class="nv">REMOTE_BRANCH</span>:?<span class="s1">'You need to configure the REMOTE_BRANCH environment variable!'</span><span class="k">}</span>
+<span class="nb">set</span> <span class="nt">-e</span>
+git config <span class="nt">--global</span> user.email <span class="s2">"&lt;your email&gt;"</span>
+git config <span class="nt">--global</span> user.name <span class="s2">"&lt;your name&gt; (codeship)"</span>
+git clone <span class="k">${</span><span class="nv">REMOTE_REPOSITORY</span><span class="k">}</span> _tmp <span class="nt">-b</span> <span class="k">${</span><span class="nv">REMOTE_BRANCH</span><span class="k">}</span>
+<span class="nb">cp</span> <span class="nt">-R</span> _site/<span class="k">*</span> _tmp/
+<span class="nb">cd </span>_tmp
+git add <span class="nb">.</span>
+git status
+git commit <span class="nt">-m</span> <span class="s2">"new build"</span>
+git push origin master</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>In the Environment tab, create 2 environment variables (to be used in the script above):</p>
+<ul>
+  <li><code class="highlighter-rouge">REMOTE_REPOSITORY</code>: put the address of the destination repository, the one for the static Github pages, eg. <code class="highlighter-rouge">git@github.com:ldom/ldom.git</code></li>
+  <li><code class="highlighter-rouge">REMOTE_BRANCH</code>: put <code class="highlighter-rouge">master</code></li>
+</ul>
+
+<ol>
+  <li>The last step is to configure CodeShip and Github to allow the deploy script to push (write) to the destination repository.</li>
+</ol>
+
+<p>This is described on this page: <a href="https://documentation.codeship.com/basic/builds-and-configuration/access-to-other-repositories/#sts=The%20Machine%20User%20Solution">https://documentation.codeship.com/basic/builds-and-configuration/access-to-other-repositories/#sts=The%20Machine%20User%20Solution</a></p>
+
+<p>I recommend using the “Machine User” solution. 
+It involves:</p>
+<ul>
+  <li>creating a new github.com user and</li>
+  <li>give it access to the destination repository (by inviting it as a collaborator in the destination repository),</li>
+  <li>then you have to remove the key from the Deploy section under the destination repository (not your user settings, but the repository settings).</li>
+  <li>At last, you need to put that key (that has to be copied from General tab of the Project Settings in CodeShip) as a new key on the “Machine User” github account. (Note that if you don’t remove it first from the Deploy settings of the destination repository, you won’t be able to add that key to the “Machine User” keys).</li>
+</ul>
+
+<p>Once all of this is done, you’ll enjoy a full automated (and free) system where you just have to push to the <code class="highlighter-rouge">-src</code> repository for everything to be built and deployed to Github pages!</p>
+
+
+
+        
+
+      </div><!-- /.content -->
+
+
+      
+
+
+      
+      <footer>
+        <p><small>
+          Written by Ldom // 
+          
+          <time datetime="2019-05-10" itemprop="datePublished">2019-05-10</time>
+        </small></p>
+      </footer>
+      
+
+
+      <div id="pagination">
+  
+  
+</div><!-- /#pagination -->
+
+    </article>
+  </div>
+</main><!-- /.row -->
+
+<footer id="footer" class="row">
+  <nav id="navigation-footer" class="small-12 columns">
+    <ul class="inline-list">
+      
+
+  <li class="social-media-icon"><a href="https://github.com/ldom" target="_blank" title="Follow me at Github"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M400 177c-127 0-223 103-223 223 0 104 72 188 160 214v-41c0-33 17-46 17-46-73-8-116-43-116-126 0-45 27-69 27-69s-14-26 2-67c25-6 71 26 71 26s24-9 63-9 63 9 63 9 46-32 71-26c16 41 2 67 2 67s27 24 27 69c0 83-43 118-116 126 0 0 17 13 17 46v41c87-27 158-109 158-214 0-120-96-223-223-223zm0-42c146 0 265 119 265 265S546 665 400 665 135 546 135 400s119-265 265-265z"/>
+</svg>
+</a></li>
+
+
+
+
+
+  <li class="social-media-icon"><a href="https://twitter.com/ldom" target="_blank" title="Follow me at Twitter"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M679 239s-21 34-55 57c7 156-107 329-314 329-103 0-169-50-169-50s81 17 163-45c-83-5-103-77-103-77s23 6 50-2c-93-23-89-110-89-110s23 14 50 14c-84-65-34-148-34-148s76 107 228 116c-22-121 117-177 188-101 37-6 71-27 71-27s-12 41-49 61c30-2 63-17 63-17z"/>
+</svg>
+</a></li>
+
+
+
+
+
+
+
+  <li class="social-media-icon"><a href="https://www.instagram.com/ldom17" target="_blank" title="Follow me at Instagram"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M150 400c0-119 0-166 42-208s88-42 208-42 166 0 208 42 42 89 42 208 0 166-42 208-88 42-208 42-166 0-208-42-42-89-42-208zm455 0c0-114 0-148-29-176-29-29-62-29-176-29s-148 0-176 29c-29 29-29 62-29 176s0 148 29 176c29 29 62 29 176 29s148 0 176-29c29-29 29-62 29-176zM400 272a128 128 0 1 1 0 256 128 128 0 0 1 0-256zm0 211c46 0 83-37 83-83s-37-83-83-83-83 37-83 83 37 83 83 83zm163-216c0 16-13 30-30 30-16 0-30-14-30-30 0-17 14-30 30-30 17 0 30 13 30 30z"/>
+</svg>
+</a></li>
+
+
+
+  <li class="social-media-icon"><a href="https://ldom.tumblr.com/" target="_blank" title="Follow me at tumblr"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M570 602c-15 25-66 44-121 44-126 0-194-46-194-144V378h-50c-2 0-3-1-3-3v-98c0-3 4-4 7-5 50-17 77-51 84-110 2-14 14-22 24-22h144c2 0 3 1 3 3v112c0 2 1 3 3 3h80c2 0 3 1 3 3v114c0 2-1 3-3 3h-81c-2 0-3 1-3 3v115c0 11 2 11 4 11h69s2 0 3 3zM440 161h-65s-3-1-4 6c-9 63-38 101-87 121 0 0-4 1-4 4v63c0 2 1 3 3 3h48c2 0 3 1 3 3v141c0 46 27 124 129 124 33 0 66-11 83-27 1-1 0-3 0-3l-20-60c-1-4-3-3-3-3-13 5-26 7-37 7-28 0-44-15-44-45V361c0-2 1-3 3-3h81c2 0 3-1 3-3v-74c0-2-1-3-3-3h-80c-2 0-3-1-3-3V164c0-2-1-3-3-3z"/>
+</svg>
+</a></li>
+
+
+
+
+      
+        
+      <li><a href="https://ldom.net/about/">about</a></li>
+      
+        
+      <li><a href="https://ldom.net/search/">search</a></li>
+      
+      <li id="up-to-top"><a href="#top-of-page">›</a></li>
+    </ul>
+  </nav>
+</footer>
+
+
+
+
+
+
+
+</body>
+</html>
