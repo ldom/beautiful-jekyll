@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 07 Jun 2019 03:18:16 +0000</pubDate>
-    <lastBuildDate>Fri, 07 Jun 2019 03:18:16 +0000</lastBuildDate>
+    <pubDate>Sat, 15 Jun 2019 11:48:08 +0000</pubDate>
+    <lastBuildDate>Sat, 15 Jun 2019 11:48:08 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -126,7 +126,8 @@ Page build failed. For more information, see https://help.github.com/en/articles
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;bundle &lt;span class=&quot;nb&quot;&gt;install
-&lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; _config.yml&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; _config.yml
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;In the Setup Commands text area, use:&lt;/p&gt;
 
@@ -153,7 +154,8 @@ git clone &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv
 git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 git status
 git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;new build&quot;&lt;/span&gt;
-git push origin master&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+git push origin master
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;In the Environment tab, create 2 environment variables (to be used in the script above):&lt;/p&gt;
 &lt;ul&gt;
