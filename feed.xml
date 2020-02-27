@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 27 Feb 2020 21:16:23 +0000</pubDate>
-    <lastBuildDate>Thu, 27 Feb 2020 21:16:23 +0000</lastBuildDate>
+    <pubDate>Thu, 27 Feb 2020 21:29:23 +0000</pubDate>
+    <lastBuildDate>Thu, 27 Feb 2020 21:29:23 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -59,6 +59,10 @@
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;connect-distributed /usr/local/etc/kafka/connect-distributed.properties&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (for example, add a &lt;code class=&quot;highlighter-rouge&quot;&gt;broker-id&lt;/code&gt; into the broker config) and run the above commands into additional terminal windows pointing to separate config files.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/tech/homebrew-confluent.png&quot; alt=&quot;iTerm galore&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yes, you’ll end up with many terminal windows, but who cares.&lt;/p&gt;
 </description>
         <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
         <link>https://ldom.net/homebrew-confluent-platform/</link>
