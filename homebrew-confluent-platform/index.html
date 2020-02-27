@@ -186,7 +186,7 @@ Because of my work, I constantly have to alter my Kafka setup and try new things
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">connect-distributed /usr/local/etc/kafka/connect-distributed.properties<span class="sb">`</span></code></pre></figure>
 
-<p>Of course, in addition to the above, all the tools from the platform are installed:</p>
+<p>Of course, in addition to the above, all the tools of the platform are installed:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">ls</span> /usr/local/Cellar/confluent-platform/5.3.1/bin/
 confluent-hub				kafka-api-start				kafka-mqtt-run-class			kafka-streams-application-reset		schema-registry-start
@@ -204,7 +204,7 @@ control-center-start			kafka-dump-log				kafka-run-class				ksql-test-runner			z
 control-center-stop			kafka-log-dirs				kafka-server-start			replicator
 kafka-acls				kafka-mirror-maker			kafka-server-stop			schema-registry-run-class</code></pre></figure>
 
-<p>You can use them all locally, for example:</p>
+<p>You can use them locally, for example:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>kafka-topics <span class="nt">--zookeeper</span> localhost:2181 <span class="nt">--list</span>
 __confluent.support.metrics
