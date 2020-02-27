@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 27 Feb 2020 21:30:51 +0000</pubDate>
-    <lastBuildDate>Thu, 27 Feb 2020 21:30:51 +0000</lastBuildDate>
+    <pubDate>Thu, 27 Feb 2020 21:43:25 +0000</pubDate>
+    <lastBuildDate>Thu, 27 Feb 2020 21:43:25 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -58,11 +58,44 @@
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;connect-distributed /usr/local/etc/kafka/connect-distributed.properties&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
+&lt;p&gt;Of course, in addition to the above, all the tools from the platform are installed:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; /usr/local/Cellar/confluent-platform/5.3.1/bin/
+confluent-hub				kafka-api-start				kafka-mqtt-run-class			kafka-streams-application-reset		schema-registry-start
+confluent-rebalancer			kafka-avro-console-consumer		kafka-mqtt-start			kafka-topics				schema-registry-stop
+connect-distributed			kafka-avro-console-producer		kafka-mqtt-stop				kafka-verifiable-consumer		schema-registry-stop-service
+connect-standalone			kafka-broker-api-versions		kafka-preferred-replica-election	kafka-verifiable-producer		security-plugins-run-class
+control-center-3_0_0-reset		kafka-configs				kafka-producer-perf-test		ksql					sr-acl-cli
+control-center-3_0_1-reset		kafka-console-consumer			kafka-reassign-partitions		ksql-datagen				stub-api-run-class
+control-center-console-consumer		kafka-console-producer			kafka-replica-verification		ksql-print-metrics			stub-api-start
+control-center-export			kafka-consumer-groups			kafka-rest-run-class			ksql-run-class				support-metrics-bundle
+control-center-reset			kafka-consumer-perf-test		kafka-rest-start			ksql-server-start			zookeeper-security-migration
+control-center-run-class		kafka-delegation-tokens			kafka-rest-stop				ksql-server-stop			zookeeper-server-start
+control-center-set-acls			kafka-delete-records			kafka-rest-stop-service			ksql-stop				zookeeper-server-stop
+control-center-start			kafka-dump-log				kafka-run-class				ksql-test-runner			zookeeper-shell
+control-center-stop			kafka-log-dirs				kafka-server-start			replicator
+kafka-acls				kafka-mirror-maker			kafka-server-stop			schema-registry-run-class&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can use them all locally, for example:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;kafka-topics &lt;span class=&quot;nt&quot;&gt;--zookeeper&lt;/span&gt; localhost:2181 &lt;span class=&quot;nt&quot;&gt;--list&lt;/span&gt;
+__confluent.support.metrics
+__consumer_offsets
+connect-configs
+connect-offsets
+connect-status
+file_source
+laurent
+~ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;kafka-console-producer &lt;span class=&quot;nt&quot;&gt;--broker-list&lt;/span&gt; localhost:9092 &lt;span class=&quot;nt&quot;&gt;--topic&lt;/span&gt; laurent
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;one more line
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 &lt;p&gt;If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (for example, add a &lt;code class=&quot;highlighter-rouge&quot;&gt;broker-id&lt;/code&gt; into the broker config) and run the above commands into additional terminal windows pointing to separate config files.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/tech/homebrew-confluent.png&quot; alt=&quot;iTerm galore&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Yes, you’ll end up with many terminal windows, but who cares.&lt;/p&gt;
+&lt;p&gt;And, yes, you’ll end up with many terminal windows, but who cares.&lt;/p&gt;
 </description>
         <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
         <link>https://ldom.net/homebrew-confluent-platform/</link>

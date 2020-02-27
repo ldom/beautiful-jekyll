@@ -186,11 +186,44 @@ Because of my work, I constantly have to alter my Kafka setup and try new things
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">connect-distributed /usr/local/etc/kafka/connect-distributed.properties<span class="sb">`</span></code></pre></figure>
 
+<p>Of course, in addition to the above, all the tools from the platform are installed:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">ls</span> /usr/local/Cellar/confluent-platform/5.3.1/bin/
+confluent-hub				kafka-api-start				kafka-mqtt-run-class			kafka-streams-application-reset		schema-registry-start
+confluent-rebalancer			kafka-avro-console-consumer		kafka-mqtt-start			kafka-topics				schema-registry-stop
+connect-distributed			kafka-avro-console-producer		kafka-mqtt-stop				kafka-verifiable-consumer		schema-registry-stop-service
+connect-standalone			kafka-broker-api-versions		kafka-preferred-replica-election	kafka-verifiable-producer		security-plugins-run-class
+control-center-3_0_0-reset		kafka-configs				kafka-producer-perf-test		ksql					sr-acl-cli
+control-center-3_0_1-reset		kafka-console-consumer			kafka-reassign-partitions		ksql-datagen				stub-api-run-class
+control-center-console-consumer		kafka-console-producer			kafka-replica-verification		ksql-print-metrics			stub-api-start
+control-center-export			kafka-consumer-groups			kafka-rest-run-class			ksql-run-class				support-metrics-bundle
+control-center-reset			kafka-consumer-perf-test		kafka-rest-start			ksql-server-start			zookeeper-security-migration
+control-center-run-class		kafka-delegation-tokens			kafka-rest-stop				ksql-server-stop			zookeeper-server-start
+control-center-set-acls			kafka-delete-records			kafka-rest-stop-service			ksql-stop				zookeeper-server-stop
+control-center-start			kafka-dump-log				kafka-run-class				ksql-test-runner			zookeeper-shell
+control-center-stop			kafka-log-dirs				kafka-server-start			replicator
+kafka-acls				kafka-mirror-maker			kafka-server-stop			schema-registry-run-class</code></pre></figure>
+
+<p>You can use them all locally, for example:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>kafka-topics <span class="nt">--zookeeper</span> localhost:2181 <span class="nt">--list</span>
+__confluent.support.metrics
+__consumer_offsets
+connect-configs
+connect-offsets
+connect-status
+file_source
+laurent
+~ <span class="nv">$ </span>kafka-console-producer <span class="nt">--broker-list</span> localhost:9092 <span class="nt">--topic</span> laurent
+<span class="o">&gt;</span>one more line
+<span class="o">&gt;</span>
+<span class="err">$</span></code></pre></figure>
+
 <p>If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (for example, add a <code class="highlighter-rouge">broker-id</code> into the broker config) and run the above commands into additional terminal windows pointing to separate config files.</p>
 
 <p><img src="/images/tech/homebrew-confluent.png" alt="iTerm galore" /></p>
 
-<p>Yes, you’ll end up with many terminal windows, but who cares.</p>
+<p>And, yes, you’ll end up with many terminal windows, but who cares.</p>
 
 
 
