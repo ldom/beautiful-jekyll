@@ -5,9 +5,57 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 12 Dec 2019 19:04:23 +0000</pubDate>
-    <lastBuildDate>Thu, 12 Dec 2019 19:04:23 +0000</lastBuildDate>
+    <pubDate>Thu, 27 Feb 2020 20:56:26 +0000</pubDate>
+    <lastBuildDate>Thu, 27 Feb 2020 20:56:26 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>Install and Configure Apache Kafka and the Confluent Platform using Homebrew </title>
+        <description>&lt;p&gt;If you’re on a Mac, among the many ways to install Apache Kafka and the Confluent Platform, there is &lt;a href=&quot;https://brew.sh&quot;&gt;Homebrew&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Confluent Platform is available there and installing it is as easy as &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install confluent-platform&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, once you’ve run that command, all the Confluent components are installed on your machine but it’s not ready to start and there’s not much documentation to help you.&lt;/p&gt;
+
+&lt;p&gt;The main advantages with using Homebrew to manage your Confluent packages is that you can have multiple versions of Confluent/Kafka installed and easily switch between them and &lt;b&gt;it uses a lot less resources than Docker&lt;/b&gt;.&lt;/p&gt;
+
+&lt;p&gt;Because of my &lt;a href=&quot;/work/&quot;&gt;work&lt;/a&gt;, I constantly have to alter my Kafka setup and try new things, so in this article, I’ll focus on starting and configuring things manually.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;To install, run:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;confluent-platform&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once this is done, your install is not fully functional. You also have to create the appropriate &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/log&lt;/code&gt; folder:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;sudo mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /var/log/kafka
+&lt;span class=&quot;nb&quot;&gt;sudo chown&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;whoami&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt; /var/log/kafka&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then you’re ready to start a zookeeper and a broker.&lt;/p&gt;
+
+&lt;p&gt;If you want to modify the configuration first, edit those files:&lt;/p&gt;
+
+&lt;p&gt;For zookeeper: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka/zookeeper.properties&lt;/code&gt;
+For the broker: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka/server.properties&lt;/code&gt;
+For connect: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka/connect-distributed.properties&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka&lt;/code&gt; points to &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/Cellar/confluent-platform/5.3.1/etc/kafka/&lt;/code&gt; if you’re using 5.3.1.&lt;/p&gt;
+
+&lt;p&gt;When you’re happy with the config files, open up a bunch of &lt;a href=&quot;https://iterm2.com/&quot;&gt;terminal windows&lt;/a&gt; and run the various components:&lt;/p&gt;
+
+&lt;p&gt;First, zookeeper: &lt;code class=&quot;highlighter-rouge&quot;&gt;zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties&lt;/code&gt;
+Then a broker: &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka-server-start /usr/local/etc/kafka/server.properties&lt;/code&gt;
+For a Connect in distributed mode: &lt;code class=&quot;highlighter-rouge&quot;&gt;connect-distributed /usr/local/etc/kafka/connect-distributed.properties&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (for example, add a &lt;code class=&quot;highlighter-rouge&quot;&gt;broker-id&lt;/code&gt; into the broker config) and run the above commands into additional terminal windows pointing to separate config files.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
+        <link>https://ldom.net/homebrew-confluent-platform/</link>
+        <guid isPermaLink="true">https://ldom.net/homebrew-confluent-platform/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Carl von Ossietzky</title>

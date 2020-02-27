@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Install and Configure Apache Kafka and the Confluent Platform using Homebrew </title>
+
+  <link rel="stylesheet" href="https://ldom.net/assets/css/simplicity.css">
+  <link rel="alternate" type="application/rss+xml" title="Ldom.net" href="https://ldom.net/feed.xml">
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link type="text/plain" rel="author" href="https://ldom.net/humans.txt">
+
+  <!-- Search Engine Optimization -->
+<meta name="description" content="If you’re on a Mac, among the many ways to install Apache Kafka and the Confluent Platform, there is Homebrew.
+
+The Confluent Platform is available there and installing it is as easy as brew install confluent-platform.
+
+Unfortunately, once you’ve run that command, all the Confluent components are installed on your machine but it’s not ready to start and there’s not much documentation to help you.
+
+The main advantages with using Homebrew to manage your Confluent packages is that you can have multiple versions of Confluent/Kafka installed and easily switch between them and it uses a lot less resources than Docker.
+
+Because of my work, I constantly have to alter my Kafka setup and try new things, so in this article, I’ll focus on starting and configuring things manually.">
+
+
+
+
+
+<link rel="canonical" href="https://ldom.net/homebrew-confluent-platform/">
+
+
+    <!-- Facebook Open Graph -->
+  <meta property="og:title" content="Install and Configure Apache Kafka and the Confluent Platform using Homebrew ">
+  <meta property="og:description" content="If you’re on a Mac, among the many ways to install Apache Kafka and the Confluent Platform, there is Homebrew.
+
+The Confluent Platform is available there and installing it is as easy as brew install confluent-platform.
+
+Unfortunately, once you’ve run that command, all the Confluent components are installed on your machine but it’s not ready to start and there’s not much documentation to help you.
+
+The main advantages with using Homebrew to manage your Confluent packages is that you can have multiple versions of Confluent/Kafka installed and easily switch between them and it uses a lot less resources than Docker.
+
+Because of my work, I constantly have to alter my Kafka setup and try new things, so in this article, I’ll focus on starting and configuring things manually.">
+  <meta property="og:locale" content="en_EN">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ldom.net/homebrew-confluent-platform/">
+  <meta property="og:site_name" content="Ldom.net">
+  <meta property="og:image" content="https://ldom.net/images/headers/ryan-lum-1ak3Z7ZmtQA-unsplash.jpg">
+  
+
+  
+    <!-- More › https://dev.twitter.com/cards/overview -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="ldom">
+<meta name="twitter:creator" content="ldom">
+<meta name="twitter:title" content="Install and Configure Apache Kafka and the Confluent Platform using Homebrew ">
+<meta name="twitter:description" content="If you’re on a Mac, among the many ways to install Apache Kafka and the Confluent Platform, there is Homebrew.
+
+The Confluent Platform is available there and installing it is as easy as brew install confluent-platform.
+
+Unfortunately, once you’ve run that command, all the Confluent components are installed on your machine but it’s not ready to start and there’s not much documentation to help you.
+
+The main advantages with using Homebrew to manage your Confluent packages is that you can have multiple versions of Confluent/Kafka installed and easily switch between them and it uses a lot less resources than Docker.
+
+Because of my work, I constantly have to alter my Kafka setup and try new things, so in this article, I’ll focus on starting and configuring things manually.">
+<meta name="twitter:image" content="https://ldom.net/images/headers/ryan-lum-1ak3Z7ZmtQA-unsplash.jpg">
+
+  
+
+  
+  <link rel="icon" sizes="32x32" href="https://ldom.net/assets/img/favicon-32x32.png" />
+  <link rel="icon" sizes="192x192" href="https://ldom.net/assets/img/touch-icon-192x192.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://ldom.net/assets/img/apple-touch-icon-180x180-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://ldom.net/assets/img/apple-touch-icon-152x152-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ldom.net/assets/img/apple-touch-icon-144x144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://ldom.net/assets/img/apple-touch-icon-120x120-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://ldom.net/assets/img/apple-touch-icon-114x114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://ldom.net/assets/img/apple-touch-icon-76x76-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://ldom.net/assets/img/apple-touch-icon-72x72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="https://ldom.net/assets/img/apple-touch-icon-precomposed.png" />
+  <meta name="msapplication-TileImage" content="https://ldom.net/assets/img/msapplication_tileimage.png" />
+  <meta name="msapplication-TileColor" content="#fabb00" />
+
+  
+
+</head>
+<body id="top-of-page" class="">
+
+
+
+<nav id="tnav" class="tnav-horizontal">
+  <ul class="tnav-list">
+
+    <li id="tnav-logo" class="tnav-item"><a href="https://ldom.net/" accesskey="1">Ldom.net</a></li>
+
+    <li id="tnav-search" class="tnav-item"><a href="https://ldom.net/search/"><svg class="nav-icon" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg></a></li>
+    <li id="tnav-work" class="tnav-item"><a href="https://ldom.net/work/">work</a></li>
+    <li id="tnav-leisure" class="tnav-item"><a href="https://ldom.net/leisure/">leisure</a></li>
+
+  </ul>
+</nav>
+
+
+
+
+
+<main role="main" id="content" class="row">
+  <div class="medium-8 medium-centered columns">
+    <article itemscope itemtype="http://schema.org/Article">
+      <meta content="" itemprop="inLanguage" />
+      <header>
+
+        
+        
+
+
+        
+
+
+
+        
+        <figure>
+          <img src="https://ldom.net/images/headers/ryan-lum-1ak3Z7ZmtQA-unsplash.jpg" alt="Install and Configure Apache Kafka and the Confluent Platform using Homebrew " itemprop="image">
+
+          
+          <figcaption>
+            <a href="https://unsplash.com/@ryanlum" target="_blank">Photo of Prague by Ryan Lum</a>
+          </figcaption>
+          
+        </figure>
+        
+
+
+        
+
+
+        <h1 itemprop="name headline">Install and Configure Apache Kafka and the Confluent Platform using Homebrew </h1>
+      </header>
+
+
+      <div class="main-content" itemprop="articleSection">
+        
+        <p>If you’re on a Mac, among the many ways to install Apache Kafka and the Confluent Platform, there is <a href="https://brew.sh">Homebrew</a>.</p>
+
+<p>The Confluent Platform is available there and installing it is as easy as <code class="highlighter-rouge">brew install confluent-platform</code>.</p>
+
+<p>Unfortunately, once you’ve run that command, all the Confluent components are installed on your machine but it’s not ready to start and there’s not much documentation to help you.</p>
+
+<p>The main advantages with using Homebrew to manage your Confluent packages is that you can have multiple versions of Confluent/Kafka installed and easily switch between them and <b>it uses a lot less resources than Docker</b>.</p>
+
+<p>Because of my <a href="/work/">work</a>, I constantly have to alter my Kafka setup and try new things, so in this article, I’ll focus on starting and configuring things manually.</p>
+
+<!--more-->
+
+<p>To install, run:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">brew <span class="nb">install </span>confluent-platform</code></pre></figure>
+
+<p>Once this is done, your install is not fully functional. You also have to create the appropriate <code class="highlighter-rouge">/var/log</code> folder:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /var/log/kafka
+<span class="nb">sudo chown</span> <span class="nt">-R</span> <span class="si">$(</span><span class="nb">whoami</span><span class="si">)</span> /var/log/kafka</code></pre></figure>
+
+<p>Then you’re ready to start a zookeeper and a broker.</p>
+
+<p>If you want to modify the configuration first, edit those files:</p>
+
+<p>For zookeeper: <code class="highlighter-rouge">/usr/local/etc/kafka/zookeeper.properties</code>
+For the broker: <code class="highlighter-rouge">/usr/local/etc/kafka/server.properties</code>
+For connect: <code class="highlighter-rouge">/usr/local/etc/kafka/connect-distributed.properties</code></p>
+
+<p>Note that <code class="highlighter-rouge">/usr/local/etc/kafka</code> points to <code class="highlighter-rouge">/usr/local/Cellar/confluent-platform/5.3.1/etc/kafka/</code> if you’re using 5.3.1.</p>
+
+<p>When you’re happy with the config files, open up a bunch of <a href="https://iterm2.com/">terminal windows</a> and run the various components:</p>
+
+<p>First, zookeeper: <code class="highlighter-rouge">zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties</code>
+Then a broker: <code class="highlighter-rouge">kafka-server-start /usr/local/etc/kafka/server.properties</code>
+For a Connect in distributed mode: <code class="highlighter-rouge">connect-distributed /usr/local/etc/kafka/connect-distributed.properties</code></p>
+
+<p>If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (for example, add a <code class="highlighter-rouge">broker-id</code> into the broker config) and run the above commands into additional terminal windows pointing to separate config files.</p>
+
+
+
+        
+
+      </div><!-- /.content -->
+
+
+      
+
+
+      
+      <footer>
+        <p><small>
+          Written by Ldom // 
+          
+          <time datetime="2020-02-27" itemprop="datePublished">2020-02-27</time>
+        </small></p>
+      </footer>
+      
+
+
+      <div id="pagination">
+  
+    <a class="prev" href="https://ldom.net/carl-von-ossietzky/" title="Carl von Ossietzky"><span class="skip">&lsaquo;</span><span>»Carl von Ossietzky«</span></a>
+  
+  
+</div><!-- /#pagination -->
+
+    </article>
+  </div>
+</main><!-- /.row -->
+
+<footer id="footer" class="row">
+  <nav id="navigation-footer" class="small-12 columns">
+    <ul class="inline-list">
+      
+
+
+
+
+
+  <li class="social-media-icon"><a href="https://twitter.com/ldom" target="_blank" title="Follow me at Twitter"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M679 239s-21 34-55 57c7 156-107 329-314 329-103 0-169-50-169-50s81 17 163-45c-83-5-103-77-103-77s23 6 50-2c-93-23-89-110-89-110s23 14 50 14c-84-65-34-148-34-148s76 107 228 116c-22-121 117-177 188-101 37-6 71-27 71-27s-12 41-49 61c30-2 63-17 63-17z"/>
+</svg>
+</a></li>
+
+
+
+
+
+
+
+  <li class="social-media-icon"><a href="https://www.instagram.com/ldom" target="_blank" title="Follow me at Instagram"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M150 400c0-119 0-166 42-208s88-42 208-42 166 0 208 42 42 89 42 208 0 166-42 208-88 42-208 42-166 0-208-42-42-89-42-208zm455 0c0-114 0-148-29-176-29-29-62-29-176-29s-148 0-176 29c-29 29-29 62-29 176s0 148 29 176c29 29 62 29 176 29s148 0 176-29c29-29 29-62 29-176zM400 272a128 128 0 1 1 0 256 128 128 0 0 1 0-256zm0 211c46 0 83-37 83-83s-37-83-83-83-83 37-83 83 37 83 83 83zm163-216c0 16-13 30-30 30-16 0-30-14-30-30 0-17 14-30 30-30 17 0 30 13 30 30z"/>
+</svg>
+</a></li>
+
+
+
+
+
+
+      
+        
+      <li><a href="https://ldom.net/about/">about</a></li>
+      
+        
+      <li><a href="https://ldom.net/search/">search</a></li>
+      
+      <li id="up-to-top"><a href="#top-of-page">›</a></li>
+    </ul>
+  </nav>
+</footer>
+
+
+
+
+
+
+
+</body>
+</html>
