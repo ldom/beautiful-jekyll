@@ -164,17 +164,27 @@ Because of my work, I constantly have to alter my Kafka setup and try new things
 
 <p>If you want to modify the configuration first, edit those files:</p>
 
-<p>For zookeeper: <code class="highlighter-rouge">/usr/local/etc/kafka/zookeeper.properties</code>
-For the broker: <code class="highlighter-rouge">/usr/local/etc/kafka/server.properties</code>
-For connect: <code class="highlighter-rouge">/usr/local/etc/kafka/connect-distributed.properties</code></p>
+<p>For zookeeper: <code class="highlighter-rouge">/usr/local/etc/kafka/zookeeper.properties</code></p>
+
+<p>For the broker: <code class="highlighter-rouge">/usr/local/etc/kafka/server.properties</code></p>
+
+<p>For connect: <code class="highlighter-rouge">/usr/local/etc/kafka/connect-distributed.properties</code></p>
 
 <p>Note that <code class="highlighter-rouge">/usr/local/etc/kafka</code> points to <code class="highlighter-rouge">/usr/local/Cellar/confluent-platform/5.3.1/etc/kafka/</code> if you’re using 5.3.1.</p>
 
 <p>When you’re happy with the config files, open up a bunch of <a href="https://iterm2.com/">terminal windows</a> and run the various components:</p>
 
-<p>First, zookeeper: <code class="highlighter-rouge">zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties</code>
-Then a broker: <code class="highlighter-rouge">kafka-server-start /usr/local/etc/kafka/server.properties</code>
-For a Connect in distributed mode: <code class="highlighter-rouge">connect-distributed /usr/local/etc/kafka/connect-distributed.properties</code></p>
+<p>First, zookeeper:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties</code></pre></figure>
+
+<p>Then a broker:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">kafka-server-start /usr/local/etc/kafka/server.properties</code></pre></figure>
+
+<p>For a Connect in distributed mode:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">connect-distributed /usr/local/etc/kafka/connect-distributed.properties<span class="sb">`</span></code></pre></figure>
 
 <p>If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (for example, add a <code class="highlighter-rouge">broker-id</code> into the broker config) and run the above commands into additional terminal windows pointing to separate config files.</p>
 

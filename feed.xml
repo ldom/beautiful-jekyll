@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 27 Feb 2020 20:56:26 +0000</pubDate>
-    <lastBuildDate>Thu, 27 Feb 2020 20:56:26 +0000</lastBuildDate>
+    <pubDate>Thu, 27 Feb 2020 21:16:23 +0000</pubDate>
+    <lastBuildDate>Thu, 27 Feb 2020 21:16:23 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -36,17 +36,27 @@
 
 &lt;p&gt;If you want to modify the configuration first, edit those files:&lt;/p&gt;
 
-&lt;p&gt;For zookeeper: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka/zookeeper.properties&lt;/code&gt;
-For the broker: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka/server.properties&lt;/code&gt;
-For connect: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka/connect-distributed.properties&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;For zookeeper: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka/zookeeper.properties&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For the broker: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka/server.properties&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;For connect: &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka/connect-distributed.properties&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Note that &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/etc/kafka&lt;/code&gt; points to &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/local/Cellar/confluent-platform/5.3.1/etc/kafka/&lt;/code&gt; if you’re using 5.3.1.&lt;/p&gt;
 
 &lt;p&gt;When you’re happy with the config files, open up a bunch of &lt;a href=&quot;https://iterm2.com/&quot;&gt;terminal windows&lt;/a&gt; and run the various components:&lt;/p&gt;
 
-&lt;p&gt;First, zookeeper: &lt;code class=&quot;highlighter-rouge&quot;&gt;zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties&lt;/code&gt;
-Then a broker: &lt;code class=&quot;highlighter-rouge&quot;&gt;kafka-server-start /usr/local/etc/kafka/server.properties&lt;/code&gt;
-For a Connect in distributed mode: &lt;code class=&quot;highlighter-rouge&quot;&gt;connect-distributed /usr/local/etc/kafka/connect-distributed.properties&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;First, zookeeper:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then a broker:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;kafka-server-start /usr/local/etc/kafka/server.properties&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For a Connect in distributed mode:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;connect-distributed /usr/local/etc/kafka/connect-distributed.properties&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (for example, add a &lt;code class=&quot;highlighter-rouge&quot;&gt;broker-id&lt;/code&gt; into the broker config) and run the above commands into additional terminal windows pointing to separate config files.&lt;/p&gt;
 </description>
