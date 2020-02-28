@@ -237,7 +237,7 @@ In this article, I’m describing Option 3.">
 
 <p>To upgrade without removing the previous versions, run:</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">export </span><span class="nv">HOMEBREW_NO_INSTALL_CLEANUP</span><span class="o">=</span>1<span class="p">;</span> brew upgrade confluent-platform
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ HOMEBREW_NO_INSTALL_CLEANUP</span><span class="o">=</span>1 brew upgrade confluent-platform
 Updating Homebrew...
 
 .../...
@@ -246,6 +246,8 @@ Updating Homebrew...
 confluent-platform 5.3.1 -&gt; 5.4.0
 
 .../...</code></pre></figure>
+
+<p>(To set the option permanently and for all the Homebrew packages, you can add <code class="highlighter-rouge">export HOMEBREW_NO_INSTALL_CLEANUP=1</code> to your bash profile but I don’t recommend it.)</p>
 
 <p>To check what you have locally (in this example, I have 5.3.1 and 5.4.0):</p>
 
@@ -260,9 +262,9 @@ confluent-platform 5.3.1 -&gt; 5.4.0
 <p>From the above page, you can get the commit numbers of the previous versions. For your convenience, I am listing here some of the recent ones:</p>
 
 <ul>
-  <li>5.4.0 –&gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb</li>
-  <li>5.3.1 –&gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb</li>
-  <li>5.3.0 –&gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb</li>
+  <li>5.4.0 –&gt; <a href="https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb">https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb</a></li>
+  <li>5.3.1 –&gt; <a href="https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb">https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb</a></li>
+  <li>5.3.0 –&gt; <a href="https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb">https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb</a></li>
 </ul>
 
 <p>For prior versions, it’s a little more complicated as the formula was named <code class="highlighter-rouge">confluent-oss</code> before.</p>

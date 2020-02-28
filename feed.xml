@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Feb 2020 03:05:17 +0000</pubDate>
-    <lastBuildDate>Fri, 28 Feb 2020 03:05:17 +0000</lastBuildDate>
+    <pubDate>Fri, 28 Feb 2020 11:41:42 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Feb 2020 11:41:42 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -55,7 +55,7 @@
 
 &lt;p&gt;To upgrade without removing the previous versions, run:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOMEBREW_NO_INSTALL_CLEANUP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; brew upgrade confluent-platform
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ HOMEBREW_NO_INSTALL_CLEANUP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 brew upgrade confluent-platform
 Updating Homebrew...
 
 .../...
@@ -64,6 +64,8 @@ Updating Homebrew...
 confluent-platform 5.3.1 -&amp;gt; 5.4.0
 
 .../...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;(To set the option permanently and for all the Homebrew packages, you can add &lt;code class=&quot;highlighter-rouge&quot;&gt;export HOMEBREW_NO_INSTALL_CLEANUP=1&lt;/code&gt; to your bash profile but I don’t recommend it.)&lt;/p&gt;
 
 &lt;p&gt;To check what you have locally (in this example, I have 5.3.1 and 5.4.0):&lt;/p&gt;
 
@@ -78,9 +80,9 @@ confluent-platform 5.3.1 -&amp;gt; 5.4.0
 &lt;p&gt;From the above page, you can get the commit numbers of the previous versions. For your convenience, I am listing here some of the recent ones:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;5.4.0 –&amp;gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&lt;/li&gt;
-  &lt;li&gt;5.3.1 –&amp;gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&lt;/li&gt;
-  &lt;li&gt;5.3.0 –&amp;gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&lt;/li&gt;
+  &lt;li&gt;5.4.0 –&amp;gt; &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;5.3.1 –&amp;gt; &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;5.3.0 –&amp;gt; &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;For prior versions, it’s a little more complicated as the formula was named &lt;code class=&quot;highlighter-rouge&quot;&gt;confluent-oss&lt;/code&gt; before.&lt;/p&gt;
