@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Feb 2020 11:41:42 +0000</pubDate>
-    <lastBuildDate>Fri, 28 Feb 2020 11:41:42 +0000</lastBuildDate>
+    <pubDate>Fri, 28 Feb 2020 11:46:43 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Feb 2020 11:46:43 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -80,9 +80,9 @@ confluent-platform 5.3.1 -&amp;gt; 5.4.0
 &lt;p&gt;From the above page, you can get the commit numbers of the previous versions. For your convenience, I am listing here some of the recent ones:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;5.4.0 –&amp;gt; &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;5.3.1 –&amp;gt; &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;5.3.0 –&amp;gt; &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;5.4.0  ⇢ &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;5.3.1  ⇢ &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;5.3.0  ⇢ &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;For prior versions, it’s a little more complicated as the formula was named &lt;code class=&quot;highlighter-rouge&quot;&gt;confluent-oss&lt;/code&gt; before.&lt;/p&gt;
