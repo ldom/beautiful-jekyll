@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Switch Between Apache Kafka and Confluent Versions with Homebrew</title>
+
+  <link rel="stylesheet" href="https://ldom.net/assets/css/simplicity.css">
+  <link rel="alternate" type="application/rss+xml" title="Ldom.net" href="https://ldom.net/feed.xml">
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link type="text/plain" rel="author" href="https://ldom.net/humans.txt">
+
+  <!-- Search Engine Optimization -->
+<meta name="description" content="Once you’ve installed Apache Kafka and the Confluent Platform using Homebrew, there are many ways to maintain multiple versions of the package on your local computer.
+
+(This is kinda part 2 of Install and Configure Apache Kafka and the Confluent Platform using Homebrew.)
+
+To switch from a version to another with Homebrew (here: 5.3.1), simply do:
+
+brew switch confluent-platform 5.3.1
+
+This is great but it relies on the fact that the version you want to switch to is currently installed locally in your cellar. If it’s the case, Homebrew does the switch instantly by updating symlinks.
+
+There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the HOMEBREW_NO_INSTALL_CLEANUP envvar.
+
+You can:
+
+
+  
+    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, brew cleanup will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.
+  
+  
+    Build you own keg and feed it with the versions that you want to keep using brew extract. Too much work IMHO.
+  
+  
+    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading confluent-platform. If the version you want is gone, restore it using brew install referencing the specific commit number. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)
+  
+
+
+In this article, I’m describing Option 3.">
+
+
+
+
+
+<link rel="canonical" href="https://ldom.net/homebrew-switch-confluent-versions/">
+
+
+    <!-- Facebook Open Graph -->
+  <meta property="og:title" content="Switch Between Apache Kafka and Confluent Versions with Homebrew">
+  <meta property="og:description" content="Once you’ve installed Apache Kafka and the Confluent Platform using Homebrew, there are many ways to maintain multiple versions of the package on your local computer.
+
+(This is kinda part 2 of Install and Configure Apache Kafka and the Confluent Platform using Homebrew.)
+
+To switch from a version to another with Homebrew (here: 5.3.1), simply do:
+
+brew switch confluent-platform 5.3.1
+
+This is great but it relies on the fact that the version you want to switch to is currently installed locally in your cellar. If it’s the case, Homebrew does the switch instantly by updating symlinks.
+
+There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the HOMEBREW_NO_INSTALL_CLEANUP envvar.
+
+You can:
+
+
+  
+    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, brew cleanup will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.
+  
+  
+    Build you own keg and feed it with the versions that you want to keep using brew extract. Too much work IMHO.
+  
+  
+    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading confluent-platform. If the version you want is gone, restore it using brew install referencing the specific commit number. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)
+  
+
+
+In this article, I’m describing Option 3.">
+  <meta property="og:locale" content="en_EN">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ldom.net/homebrew-switch-confluent-versions/">
+  <meta property="og:site_name" content="Ldom.net">
+  <meta property="og:image" content="https://ldom.net/images/headers/vlad-kiselov-VTlL6eHa1QQ-unsplash.jpg">
+  
+
+  
+    <!-- More › https://dev.twitter.com/cards/overview -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="ldom">
+<meta name="twitter:creator" content="ldom">
+<meta name="twitter:title" content="Switch Between Apache Kafka and Confluent Versions with Homebrew">
+<meta name="twitter:description" content="Once you’ve installed Apache Kafka and the Confluent Platform using Homebrew, there are many ways to maintain multiple versions of the package on your local computer.
+
+(This is kinda part 2 of Install and Configure Apache Kafka and the Confluent Platform using Homebrew.)
+
+To switch from a version to another with Homebrew (here: 5.3.1), simply do:
+
+brew switch confluent-platform 5.3.1
+
+This is great but it relies on the fact that the version you want to switch to is currently installed locally in your cellar. If it’s the case, Homebrew does the switch instantly by updating symlinks.
+
+There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the HOMEBREW_NO_INSTALL_CLEANUP envvar.
+
+You can:
+
+
+  
+    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, brew cleanup will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.
+  
+  
+    Build you own keg and feed it with the versions that you want to keep using brew extract. Too much work IMHO.
+  
+  
+    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading confluent-platform. If the version you want is gone, restore it using brew install referencing the specific commit number. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)
+  
+
+
+In this article, I’m describing Option 3.">
+<meta name="twitter:image" content="https://ldom.net/images/headers/vlad-kiselov-VTlL6eHa1QQ-unsplash.jpg">
+
+  
+
+  
+  <link rel="icon" sizes="32x32" href="https://ldom.net/assets/img/favicon-32x32.png" />
+  <link rel="icon" sizes="192x192" href="https://ldom.net/assets/img/touch-icon-192x192.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://ldom.net/assets/img/apple-touch-icon-180x180-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://ldom.net/assets/img/apple-touch-icon-152x152-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ldom.net/assets/img/apple-touch-icon-144x144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://ldom.net/assets/img/apple-touch-icon-120x120-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://ldom.net/assets/img/apple-touch-icon-114x114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://ldom.net/assets/img/apple-touch-icon-76x76-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://ldom.net/assets/img/apple-touch-icon-72x72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="https://ldom.net/assets/img/apple-touch-icon-precomposed.png" />
+  <meta name="msapplication-TileImage" content="https://ldom.net/assets/img/msapplication_tileimage.png" />
+  <meta name="msapplication-TileColor" content="#fabb00" />
+
+  
+
+</head>
+<body id="top-of-page" class="">
+
+
+
+<nav id="tnav" class="tnav-horizontal">
+  <ul class="tnav-list">
+
+    <li id="tnav-logo" class="tnav-item"><a href="https://ldom.net/" accesskey="1">Ldom.net</a></li>
+
+    <li id="tnav-search" class="tnav-item"><a href="https://ldom.net/search/"><svg class="nav-icon" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg></a></li>
+    <li id="tnav-work" class="tnav-item"><a href="https://ldom.net/work/">work</a></li>
+    <li id="tnav-leisure" class="tnav-item"><a href="https://ldom.net/leisure/">leisure</a></li>
+
+  </ul>
+</nav>
+
+
+
+
+
+<main role="main" id="content" class="row">
+  <div class="medium-8 medium-centered columns">
+    <article itemscope itemtype="http://schema.org/Article">
+      <meta content="" itemprop="inLanguage" />
+      <header>
+
+        
+        
+
+
+        
+
+
+
+        
+        <figure>
+          <img src="https://ldom.net/images/headers/vlad-kiselov-VTlL6eHa1QQ-unsplash.jpg" alt="Switch Between Apache Kafka and Confluent Versions with Homebrew" itemprop="image">
+
+          
+          <figcaption>
+            <a href="https://unsplash.com/@wladkiselev" target="_blank">Photo of Prague by Vlad Kiselov</a>
+          </figcaption>
+          
+        </figure>
+        
+
+
+        
+
+
+        <h1 itemprop="name headline">Switch Between Apache Kafka and Confluent Versions with Homebrew</h1>
+      </header>
+
+
+      <div class="main-content" itemprop="articleSection">
+        
+        <p>Once you’ve installed Apache Kafka and the Confluent Platform using <a href="https://brew.sh">Homebrew</a>, there are many ways to maintain multiple versions of the package on your local computer.</p>
+
+<p>(This is kinda part 2 of <a href="/homebrew-confluent-platform/">Install and Configure Apache Kafka and the Confluent Platform using Homebrew</a>.)</p>
+
+<p>To switch from a version to another with Homebrew (here: 5.3.1), simply do:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">brew switch confluent-platform 5.3.1</code></pre></figure>
+
+<p>This is great but it relies on the fact that the version you want to switch to is currently installed locally in your cellar. If it’s the case, Homebrew does the switch instantly by updating symlinks.</p>
+
+<p>There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the <code class="highlighter-rouge">HOMEBREW_NO_INSTALL_CLEANUP</code> envvar.</p>
+
+<p>You can:</p>
+
+<ol>
+  <li>
+    <p>Use <code class="highlighter-rouge">HOMEBREW_NO_INSTALL_CLEANUP</code> when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, <code class="highlighter-rouge">brew cleanup</code> will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.</p>
+  </li>
+  <li>
+    <p>Build you own keg and feed it with the versions that you want to keep using <code class="highlighter-rouge">brew extract</code>. Too much work IMHO.</p>
+  </li>
+  <li>
+    <p>Use <code class="highlighter-rouge">HOMEBREW_NO_INSTALL_CLEANUP</code> when upgrading <code class="highlighter-rouge">confluent-platform</code>. If the version you want is gone, restore it using <code class="highlighter-rouge">brew install</code> referencing the <b>specific commit number</b>. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)</p>
+  </li>
+</ol>
+
+<p>In this article, I’m describing Option 3.</p>
+
+<!--more-->
+
+<p>Reference points:</p>
+
+<ul>
+  <li><a href="https://formulae.brew.sh/formula/confluent-platform">https://formulae.brew.sh/formula/confluent-platform</a> –&gt; page for the formula in Homebrew</li>
+  <li><a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/confluent-platform.rb">https://github.com/Homebrew/homebrew-core/blob/master/Formula/confluent-platform.rb</a> –&gt; location of the formula for the Confluent Platform in the repo</li>
+  <li><a href="https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb">https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb</a> –&gt; commit history of the formula</li>
+</ul>
+
+<p>To install for the first time, run:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">brew <span class="nb">install </span>confluent-platform</code></pre></figure>
+
+<p>To upgrade without removing the previous versions, run:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">export </span><span class="nv">HOMEBREW_NO_INSTALL_CLEANUP</span><span class="o">=</span>1<span class="p">;</span> brew upgrade confluent-platform
+Updating Homebrew...
+
+.../...
+
+<span class="o">==&gt;</span> Upgrading 1 outdated package:
+confluent-platform 5.3.1 -&gt; 5.4.0
+
+.../...</code></pre></figure>
+
+<p>To check what you have locally (in this example, I have 5.3.1 and 5.4.0):</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>brew info confluent-platform</code></pre></figure>
+
+<p>If you want to re-install a previous version:</p>
+
+<ol>
+  <li>Get the commit number at <a href="https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb">https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb</a>. If it says “this commit history is taking too long to generate”, then clone <code class="highlighter-rouge">homebrew-core</code> and check the commits there with <code class="highlighter-rouge">git log master -- Formula/confluent-platform.rb</code>.</li>
+</ol>
+
+<p>From the above page, you can get the commit numbers of the previous versions. For your convenience, I am listing here some of the recent ones:</p>
+
+<ul>
+  <li>5.4.0 –&gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb</li>
+  <li>5.3.1 –&gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb</li>
+  <li>5.3.0 –&gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb</li>
+</ul>
+
+<p>For prior versions, it’s a little more complicated as the formula was named <code class="highlighter-rouge">confluent-oss</code> before.</p>
+
+<ol>
+  <li>Reference the commit number in the install command, for example to install 5.3.0:</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">brew <span class="nb">install </span>https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb</code></pre></figure>
+
+<p>Now, check what you have and go crazy switching versions:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">brew info confluent-platform</code></pre></figure>
+
+<p>One last thing:</p>
+<ul>
+  <li>Don’t forget to <b>stop running instances</b> before upgrade/switch operations. (Ctrl-C on your terminals…)</li>
+  <li>To fully <b>reset your data</b> (delete your topics and log files) between version switches, find where the topics are stored (check the <code class="highlighter-rouge">log.dirs</code> config property, by default it’s in <code class="highlighter-rouge">/tmp/kafka-logs</code>):</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">rm</span> <span class="nt">-rf</span> /tmp/kafka-logs
+<span class="nb">rm</span> <span class="nt">-rf</span> /var/log/kafka/<span class="k">*</span></code></pre></figure>
+
+<p>That’s all, folks!</p>
+
+
+
+        
+
+      </div><!-- /.content -->
+
+
+      
+
+
+      
+      <footer>
+        <p><small>
+          Written by Ldom // 
+          
+          <time datetime="2020-02-27" itemprop="datePublished">2020-02-27</time>
+        </small></p>
+      </footer>
+      
+
+
+      <div id="pagination">
+  
+    <a class="prev" href="https://ldom.net/homebrew-confluent-platform/" title="Install and Configure Apache Kafka and the Confluent Platform using Homebrew "><span class="skip">&lsaquo;</span><span>»Install and Configure Apache Kafka and the Confluent Platform using Homebrew «</span></a>
+  
+  
+</div><!-- /#pagination -->
+
+    </article>
+  </div>
+</main><!-- /.row -->
+
+<footer id="footer" class="row">
+  <nav id="navigation-footer" class="small-12 columns">
+    <ul class="inline-list">
+      
+
+
+
+
+
+  <li class="social-media-icon"><a href="https://twitter.com/ldom" target="_blank" title="Follow me at Twitter"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M679 239s-21 34-55 57c7 156-107 329-314 329-103 0-169-50-169-50s81 17 163-45c-83-5-103-77-103-77s23 6 50-2c-93-23-89-110-89-110s23 14 50 14c-84-65-34-148-34-148s76 107 228 116c-22-121 117-177 188-101 37-6 71-27 71-27s-12 41-49 61c30-2 63-17 63-17z"/>
+</svg>
+</a></li>
+
+
+
+
+
+
+
+  <li class="social-media-icon"><a href="https://www.instagram.com/ldom" target="_blank" title="Follow me at Instagram"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M150 400c0-119 0-166 42-208s88-42 208-42 166 0 208 42 42 89 42 208 0 166-42 208-88 42-208 42-166 0-208-42-42-89-42-208zm455 0c0-114 0-148-29-176-29-29-62-29-176-29s-148 0-176 29c-29 29-29 62-29 176s0 148 29 176c29 29 62 29 176 29s148 0 176-29c29-29 29-62 29-176zM400 272a128 128 0 1 1 0 256 128 128 0 0 1 0-256zm0 211c46 0 83-37 83-83s-37-83-83-83-83 37-83 83 37 83 83 83zm163-216c0 16-13 30-30 30-16 0-30-14-30-30 0-17 14-30 30-30 17 0 30 13 30 30z"/>
+</svg>
+</a></li>
+
+
+
+
+
+
+      
+        
+      <li><a href="https://ldom.net/about/">about</a></li>
+      
+        
+      <li><a href="https://ldom.net/search/">search</a></li>
+      
+      <li id="up-to-top"><a href="#top-of-page">›</a></li>
+    </ul>
+  </nav>
+</footer>
+
+
+
+
+
+
+
+</body>
+</html>

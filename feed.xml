@@ -5,9 +5,113 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Feb 2020 00:41:12 +0000</pubDate>
-    <lastBuildDate>Fri, 28 Feb 2020 00:41:12 +0000</lastBuildDate>
+    <pubDate>Fri, 28 Feb 2020 03:05:17 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Feb 2020 03:05:17 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
+    
+      <item>
+        <title>Switch Between Apache Kafka and Confluent Versions with Homebrew</title>
+        <description>&lt;p&gt;Once you’ve installed Apache Kafka and the Confluent Platform using &lt;a href=&quot;https://brew.sh&quot;&gt;Homebrew&lt;/a&gt;, there are many ways to maintain multiple versions of the package on your local computer.&lt;/p&gt;
+
+&lt;p&gt;(This is kinda part 2 of &lt;a href=&quot;/homebrew-confluent-platform/&quot;&gt;Install and Configure Apache Kafka and the Confluent Platform using Homebrew&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;To switch from a version to another with Homebrew (here: 5.3.1), simply do:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew switch confluent-platform 5.3.1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This is great but it relies on the fact that the version you want to switch to is currently installed locally in your cellar. If it’s the case, Homebrew does the switch instantly by updating symlinks.&lt;/p&gt;
+
+&lt;p&gt;There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the &lt;code class=&quot;highlighter-rouge&quot;&gt;HOMEBREW_NO_INSTALL_CLEANUP&lt;/code&gt; envvar.&lt;/p&gt;
+
+&lt;p&gt;You can:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;HOMEBREW_NO_INSTALL_CLEANUP&lt;/code&gt; when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, &lt;code class=&quot;highlighter-rouge&quot;&gt;brew cleanup&lt;/code&gt; will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Build you own keg and feed it with the versions that you want to keep using &lt;code class=&quot;highlighter-rouge&quot;&gt;brew extract&lt;/code&gt;. Too much work IMHO.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;HOMEBREW_NO_INSTALL_CLEANUP&lt;/code&gt; when upgrading &lt;code class=&quot;highlighter-rouge&quot;&gt;confluent-platform&lt;/code&gt;. If the version you want is gone, restore it using &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install&lt;/code&gt; referencing the &lt;b&gt;specific commit number&lt;/b&gt;. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In this article, I’m describing Option 3.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;Reference points:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://formulae.brew.sh/formula/confluent-platform&quot;&gt;https://formulae.brew.sh/formula/confluent-platform&lt;/a&gt; –&amp;gt; page for the formula in Homebrew&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Homebrew/homebrew-core/blob/master/Formula/confluent-platform.rb&quot;&gt;https://github.com/Homebrew/homebrew-core/blob/master/Formula/confluent-platform.rb&lt;/a&gt; –&amp;gt; location of the formula for the Confluent Platform in the repo&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb&quot;&gt;https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb&lt;/a&gt; –&amp;gt; commit history of the formula&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To install for the first time, run:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;confluent-platform&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To upgrade without removing the previous versions, run:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOMEBREW_NO_INSTALL_CLEANUP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; brew upgrade confluent-platform
+Updating Homebrew...
+
+.../...
+
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Upgrading 1 outdated package:
+confluent-platform 5.3.1 -&amp;gt; 5.4.0
+
+.../...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To check what you have locally (in this example, I have 5.3.1 and 5.4.0):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew info confluent-platform&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If you want to re-install a previous version:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Get the commit number at &lt;a href=&quot;https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb&quot;&gt;https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb&lt;/a&gt;. If it says “this commit history is taking too long to generate”, then clone &lt;code class=&quot;highlighter-rouge&quot;&gt;homebrew-core&lt;/code&gt; and check the commits there with &lt;code class=&quot;highlighter-rouge&quot;&gt;git log master -- Formula/confluent-platform.rb&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;From the above page, you can get the commit numbers of the previous versions. For your convenience, I am listing here some of the recent ones:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;5.4.0 –&amp;gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&lt;/li&gt;
+  &lt;li&gt;5.3.1 –&amp;gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&lt;/li&gt;
+  &lt;li&gt;5.3.0 –&amp;gt; https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For prior versions, it’s a little more complicated as the formula was named &lt;code class=&quot;highlighter-rouge&quot;&gt;confluent-oss&lt;/code&gt; before.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Reference the commit number in the install command, for example to install 5.3.0:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now, check what you have and go crazy switching versions:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew info confluent-platform&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;One last thing:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Don’t forget to &lt;b&gt;stop running instances&lt;/b&gt; before upgrade/switch operations. (Ctrl-C on your terminals…)&lt;/li&gt;
+  &lt;li&gt;To fully &lt;b&gt;reset your data&lt;/b&gt; (delete your topics and log files) between version switches, find where the topics are stored (check the &lt;code class=&quot;highlighter-rouge&quot;&gt;log.dirs&lt;/code&gt; config property, by default it’s in &lt;code class=&quot;highlighter-rouge&quot;&gt;/tmp/kafka-logs&lt;/code&gt;):&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /tmp/kafka-logs
+&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; /var/log/kafka/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;That’s all, folks!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 27 Feb 2020 00:00:00 +0000</pubDate>
+        <link>https://ldom.net/homebrew-switch-confluent-versions/</link>
+        <guid isPermaLink="true">https://ldom.net/homebrew-switch-confluent-versions/</guid>
+        
+        
+      </item>
     
       <item>
         <title>Install and Configure Apache Kafka and the Confluent Platform using Homebrew </title>
