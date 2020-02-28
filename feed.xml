@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Feb 2020 13:10:41 +0000</pubDate>
-    <lastBuildDate>Fri, 28 Feb 2020 13:10:41 +0000</lastBuildDate>
+    <pubDate>Fri, 28 Feb 2020 13:15:47 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Feb 2020 13:15:47 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -59,21 +59,48 @@
 
 &lt;p&gt;To upgrade without removing the previous versions, run:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ HOMEBREW_NO_INSTALL_CLEANUP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 brew upgrade confluent-platform
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;~ &lt;span class=&quot;nv&quot;&gt;$ HOMEBREW_NO_INSTALL_CLEANUP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1 brew upgrade confluent-platform
 Updating Homebrew...
-
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Auto-updated Homebrew!
+Updated 1 tap &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;homebrew/core&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Updated Formulae
 .../...
 
 &lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Upgrading 1 outdated package:
 confluent-platform 5.3.1 -&amp;gt; 5.4.0
-
-.../...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Upgrading confluent-platform
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Downloading https://packages.confluent.io/archive/5.4/confluent-5.4.0-2.12.tar.gz
+&lt;span class=&quot;c&quot;&gt;######################################################################## 100.0%&lt;/span&gt;
+🍺  /usr/local/Cellar/confluent-platform/5.4.0: 2,943 files, 951.4MB, built &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;85 minutes 52 seconds
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Checking &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;dependents of upgraded formulae...
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; No dependents found!&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;(To set the option permanently and for all the Homebrew packages, you can add &lt;code class=&quot;highlighter-rouge&quot;&gt;export HOMEBREW_NO_INSTALL_CLEANUP=1&lt;/code&gt; to your bash profile but I don’t recommend it.)&lt;/p&gt;
 
 &lt;p&gt;To check what you have locally (in this example, I have 5.3.1 and 5.4.0):&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew info confluent-platform&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;~ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew info confluent-platform
+confluent-platform: stable 5.4.0
+Developer-optimized distribution of Apache Kafka
+https://www.confluent.io/product/confluent-platform/
+Conflicts with:
+ kafka &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;because kafka also ships with identically named Kafka related executables&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&amp;lt;b&amp;gt;/usr/local/Cellar/confluent-platform/5.3.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2,499 files, 827.2MB&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;lt;/b&amp;gt;
+ Built from &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;on 2020-02-26 at 14:22:54
+&amp;lt;b&amp;gt;/usr/local/Cellar/confluent-platform/5.4.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2,943 files, 951.4MB&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&amp;lt;/b&amp;gt;
+ Built from &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;on 2020-02-28 at 08:08:33
+From: https://github.com/Homebrew/homebrew-core/blob/master/Formula/confluent-platform.rb
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Requirements
+Required: java &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1.8 ✔
+&lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Analytics
+&lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;: 317 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;30 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 572 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;90 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 1,593 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;365 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+install-on-request: 316 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;30 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 570 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;90 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 1,578 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;365 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+build-error: 0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;30 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You can also check what on the disk:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;~ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; /usr/local/Cellar/confluent-platform/
+5.3.1	5.4.0&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;re-install-of-a-previous-version&quot;&gt;Re-install of a Previous Version&lt;/h2&gt;
 
@@ -99,9 +126,7 @@ confluent-platform 5.3.1 -&amp;gt; 5.4.0
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Now, check what you have and go crazy switching versions:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew info confluent-platform&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;Now, check what you have (see above) and go crazy switching versions:&lt;/p&gt;
 
 &lt;p&gt;One last thing:&lt;/p&gt;
 &lt;ul&gt;
