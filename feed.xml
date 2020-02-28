@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Feb 2020 13:05:25 +0000</pubDate>
-    <lastBuildDate>Fri, 28 Feb 2020 13:05:25 +0000</lastBuildDate>
+    <pubDate>Fri, 28 Feb 2020 13:10:41 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Feb 2020 13:10:41 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -49,13 +49,13 @@
   &lt;li&gt;&lt;a href=&quot;https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb&quot;&gt;https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb&lt;/a&gt; –&amp;gt; commit history of the formula&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;== First Install&lt;/p&gt;
+&lt;h2 id=&quot;first-install&quot;&gt;First Install&lt;/h2&gt;
 
 &lt;p&gt;To install for the first time, run:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;confluent-platform&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;== Upgrades&lt;/p&gt;
+&lt;h2 id=&quot;upgrades&quot;&gt;Upgrades&lt;/h2&gt;
 
 &lt;p&gt;To upgrade without removing the previous versions, run:&lt;/p&gt;
 
@@ -75,7 +75,7 @@ confluent-platform 5.3.1 -&amp;gt; 5.4.0
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew info confluent-platform&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;== Re-install of a Previous Version&lt;/p&gt;
+&lt;h2 id=&quot;re-install-of-a-previous-version&quot;&gt;Re-install of a Previous Version&lt;/h2&gt;
 
 &lt;p&gt;If you want to re-install a previous version:&lt;/p&gt;
 
