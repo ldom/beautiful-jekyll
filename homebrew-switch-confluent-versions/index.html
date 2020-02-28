@@ -259,17 +259,34 @@ confluent-platform 5.3.1 -&gt; 5.4.0
 
 <p>(To set the option permanently and for all the Homebrew packages, you can add <code class="highlighter-rouge">export HOMEBREW_NO_INSTALL_CLEANUP=1</code> to your bash profile but I don’t recommend it.)</p>
 
-<p>To check what you have locally (in this example, I have 5.3.1 and 5.4.0):</p>
+<p>To check what you have locally (in this example, see line 7 and 9, I have 5.3.1 and 5.4.0):</p>
 
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash">~ <span class="nv">$ </span>brew info confluent-platform
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre>~ <span class="nv">$ </span>brew info confluent-platform
 confluent-platform: stable 5.4.0
 Developer-optimized distribution of Apache Kafka
 https://www.confluent.io/product/confluent-platform/
 Conflicts with:
  kafka <span class="o">(</span>because kafka also ships with identically named Kafka related executables<span class="o">)</span>
-&lt;b&gt;/usr/local/Cellar/confluent-platform/5.3.1 <span class="o">(</span>2,499 files, 827.2MB<span class="o">)</span>&lt;/b&gt;
+/usr/local/Cellar/confluent-platform/5.3.1 <span class="o">(</span>2,499 files, 827.2MB<span class="o">)</span>
  Built from <span class="nb">source </span>on 2020-02-26 at 14:22:54
-&lt;b&gt;/usr/local/Cellar/confluent-platform/5.4.0 <span class="o">(</span>2,943 files, 951.4MB<span class="o">)</span> <span class="k">*</span>&lt;/b&gt;
+/usr/local/Cellar/confluent-platform/5.4.0 <span class="o">(</span>2,943 files, 951.4MB<span class="o">)</span> <span class="k">*</span>
  Built from <span class="nb">source </span>on 2020-02-28 at 08:08:33
 From: https://github.com/Homebrew/homebrew-core/blob/master/Formula/confluent-platform.rb
 <span class="o">==&gt;</span> Requirements
@@ -277,7 +294,8 @@ Required: java <span class="o">=</span> 1.8 ✔
 <span class="o">==&gt;</span> Analytics
 <span class="nb">install</span>: 317 <span class="o">(</span>30 days<span class="o">)</span>, 572 <span class="o">(</span>90 days<span class="o">)</span>, 1,593 <span class="o">(</span>365 days<span class="o">)</span>
 install-on-request: 316 <span class="o">(</span>30 days<span class="o">)</span>, 570 <span class="o">(</span>90 days<span class="o">)</span>, 1,578 <span class="o">(</span>365 days<span class="o">)</span>
-build-error: 0 <span class="o">(</span>30 days<span class="o">)</span></code></pre></figure>
+build-error: 0 <span class="o">(</span>30 days<span class="o">)</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
 <p>You can also check what on the disk:</p>
 

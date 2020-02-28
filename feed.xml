@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Feb 2020 13:26:37 +0000</pubDate>
-    <lastBuildDate>Fri, 28 Feb 2020 13:26:37 +0000</lastBuildDate>
+    <pubDate>Fri, 28 Feb 2020 13:29:29 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Feb 2020 13:29:29 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -77,17 +77,34 @@ confluent-platform 5.3.1 -&amp;gt; 5.4.0
 
 &lt;p&gt;(To set the option permanently and for all the Homebrew packages, you can add &lt;code class=&quot;highlighter-rouge&quot;&gt;export HOMEBREW_NO_INSTALL_CLEANUP=1&lt;/code&gt; to your bash profile but I don’t recommend it.)&lt;/p&gt;
 
-&lt;p&gt;To check what you have locally (in this example, I have 5.3.1 and 5.4.0):&lt;/p&gt;
+&lt;p&gt;To check what you have locally (in this example, see line 7 and 9, I have 5.3.1 and 5.4.0):&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;~ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew info confluent-platform
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;~ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew info confluent-platform
 confluent-platform: stable 5.4.0
 Developer-optimized distribution of Apache Kafka
 https://www.confluent.io/product/confluent-platform/
 Conflicts with:
  kafka &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;because kafka also ships with identically named Kafka related executables&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&amp;lt;b&amp;gt;/usr/local/Cellar/confluent-platform/5.3.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2,499 files, 827.2MB&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&amp;lt;/b&amp;gt;
+/usr/local/Cellar/confluent-platform/5.3.1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2,499 files, 827.2MB&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
  Built from &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;on 2020-02-26 at 14:22:54
-&amp;lt;b&amp;gt;/usr/local/Cellar/confluent-platform/5.4.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2,943 files, 951.4MB&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&amp;lt;/b&amp;gt;
+/usr/local/Cellar/confluent-platform/5.4.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2,943 files, 951.4MB&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
  Built from &lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;on 2020-02-28 at 08:08:33
 From: https://github.com/Homebrew/homebrew-core/blob/master/Formula/confluent-platform.rb
 &lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Requirements
@@ -95,7 +112,8 @@ Required: java &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1.8 ✔
 &lt;span class=&quot;o&quot;&gt;==&amp;gt;&lt;/span&gt; Analytics
 &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;: 317 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;30 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 572 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;90 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 1,593 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;365 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 install-on-request: 316 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;30 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 570 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;90 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 1,578 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;365 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-build-error: 0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;30 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+build-error: 0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;30 days&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;You can also check what on the disk:&lt;/p&gt;
 
