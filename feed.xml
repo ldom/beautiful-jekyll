@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 27 Feb 2020 21:51:39 +0000</pubDate>
-    <lastBuildDate>Thu, 27 Feb 2020 21:51:39 +0000</lastBuildDate>
+    <pubDate>Fri, 28 Feb 2020 00:41:12 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Feb 2020 00:41:12 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -91,7 +91,7 @@ laurent
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (for example, add a &lt;code class=&quot;highlighter-rouge&quot;&gt;broker-id&lt;/code&gt; into the broker config) and run the above commands into additional terminal windows pointing to separate config files.&lt;/p&gt;
+&lt;p&gt;If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (at least, add a &lt;code class=&quot;highlighter-rouge&quot;&gt;broker-id&lt;/code&gt; into the broker config and point the brokers to separate &lt;code class=&quot;highlighter-rouge&quot;&gt;log.dirs&lt;/code&gt; folders) and run the above commands into additional terminal windows pointing to separate config files.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/tech/homebrew-confluent.png&quot; alt=&quot;iTerm galore&quot; /&gt;&lt;/p&gt;
 

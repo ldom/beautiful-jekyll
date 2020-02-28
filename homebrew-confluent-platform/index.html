@@ -219,7 +219,7 @@ laurent
 <span class="o">&gt;</span>
 <span class="err">$</span></code></pre></figure>
 
-<p>If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (for example, add a <code class="highlighter-rouge">broker-id</code> into the broker config) and run the above commands into additional terminal windows pointing to separate config files.</p>
+<p>If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (at least, add a <code class="highlighter-rouge">broker-id</code> into the broker config and point the brokers to separate <code class="highlighter-rouge">log.dirs</code> folders) and run the above commands into additional terminal windows pointing to separate config files.</p>
 
 <p><img src="/images/tech/homebrew-confluent.png" alt="iTerm galore" /></p>
 
