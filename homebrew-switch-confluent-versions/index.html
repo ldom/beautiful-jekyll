@@ -14,31 +14,7 @@
   <!-- Search Engine Optimization -->
 <meta name="description" content="Once you’ve installed Apache Kafka and the Confluent Platform using Homebrew, there are many ways to maintain multiple versions of the package on your local computer.
 
-(This is kinda part 2 of Install and Configure Apache Kafka and the Confluent Platform using Homebrew.)
-
-To switch from a version to another with Homebrew (here: 5.3.1), simply do:
-
-brew switch confluent-platform 5.3.1
-
-This is great but it relies on the fact that the version you want to switch to is currently installed locally in your cellar. If it’s the case, Homebrew does the switch instantly by updating symlinks.
-
-There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the HOMEBREW_NO_INSTALL_CLEANUP envvar.
-
-You can:
-
-
-  
-    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, brew cleanup will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.
-  
-  
-    Build you own keg and feed it with the versions that you want to keep using brew extract. Too much work IMHO.
-  
-  
-    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading confluent-platform. If the version you want is gone, restore it using brew install referencing the specific commit number. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)
-  
-
-
-In this article, I’m describing Option 3.">
+(This is kinda part 2 of Install and Configure Apache Kafka and the Confluent Platform using Homebrew.)">
 
 
 
@@ -51,31 +27,7 @@ In this article, I’m describing Option 3.">
   <meta property="og:title" content="Switch Between Apache Kafka and Confluent Versions with Homebrew">
   <meta property="og:description" content="Once you’ve installed Apache Kafka and the Confluent Platform using Homebrew, there are many ways to maintain multiple versions of the package on your local computer.
 
-(This is kinda part 2 of Install and Configure Apache Kafka and the Confluent Platform using Homebrew.)
-
-To switch from a version to another with Homebrew (here: 5.3.1), simply do:
-
-brew switch confluent-platform 5.3.1
-
-This is great but it relies on the fact that the version you want to switch to is currently installed locally in your cellar. If it’s the case, Homebrew does the switch instantly by updating symlinks.
-
-There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the HOMEBREW_NO_INSTALL_CLEANUP envvar.
-
-You can:
-
-
-  
-    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, brew cleanup will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.
-  
-  
-    Build you own keg and feed it with the versions that you want to keep using brew extract. Too much work IMHO.
-  
-  
-    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading confluent-platform. If the version you want is gone, restore it using brew install referencing the specific commit number. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)
-  
-
-
-In this article, I’m describing Option 3.">
+(This is kinda part 2 of Install and Configure Apache Kafka and the Confluent Platform using Homebrew.)">
   <meta property="og:locale" content="en_EN">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ldom.net/homebrew-switch-confluent-versions/">
@@ -91,31 +43,7 @@ In this article, I’m describing Option 3.">
 <meta name="twitter:title" content="Switch Between Apache Kafka and Confluent Versions with Homebrew">
 <meta name="twitter:description" content="Once you’ve installed Apache Kafka and the Confluent Platform using Homebrew, there are many ways to maintain multiple versions of the package on your local computer.
 
-(This is kinda part 2 of Install and Configure Apache Kafka and the Confluent Platform using Homebrew.)
-
-To switch from a version to another with Homebrew (here: 5.3.1), simply do:
-
-brew switch confluent-platform 5.3.1
-
-This is great but it relies on the fact that the version you want to switch to is currently installed locally in your cellar. If it’s the case, Homebrew does the switch instantly by updating symlinks.
-
-There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the HOMEBREW_NO_INSTALL_CLEANUP envvar.
-
-You can:
-
-
-  
-    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, brew cleanup will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.
-  
-  
-    Build you own keg and feed it with the versions that you want to keep using brew extract. Too much work IMHO.
-  
-  
-    Use HOMEBREW_NO_INSTALL_CLEANUP when upgrading confluent-platform. If the version you want is gone, restore it using brew install referencing the specific commit number. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)
-  
-
-
-In this article, I’m describing Option 3.">
+(This is kinda part 2 of Install and Configure Apache Kafka and the Confluent Platform using Homebrew.)">
 <meta name="twitter:image" content="https://ldom.net/images/headers/vlad-kiselov-VTlL6eHa1QQ-unsplash.jpg">
 
   
@@ -197,6 +125,8 @@ In this article, I’m describing Option 3.">
 
 <p>(This is kinda part 2 of <a href="/homebrew-confluent-platform/">Install and Configure Apache Kafka and the Confluent Platform using Homebrew</a>.)</p>
 
+<!--more-->
+
 <p>To switch from a version to another with Homebrew (here: 5.3.1), simply do:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">brew switch confluent-platform 5.3.1</code></pre></figure>
@@ -220,8 +150,6 @@ In this article, I’m describing Option 3.">
 </ol>
 
 <p>In this article, I’m describing Option 3.</p>
-
-<!--more-->
 
 <p>Reference points:</p>
 

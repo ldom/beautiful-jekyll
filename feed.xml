@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Feb 2020 14:00:01 +0000</pubDate>
-    <lastBuildDate>Fri, 28 Feb 2020 14:00:01 +0000</lastBuildDate>
+    <pubDate>Fri, 28 Feb 2020 16:46:29 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Feb 2020 16:46:29 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -14,6 +14,8 @@
         <description>&lt;p&gt;Once you’ve installed Apache Kafka and the Confluent Platform using &lt;a href=&quot;https://brew.sh&quot;&gt;Homebrew&lt;/a&gt;, there are many ways to maintain multiple versions of the package on your local computer.&lt;/p&gt;
 
 &lt;p&gt;(This is kinda part 2 of &lt;a href=&quot;/homebrew-confluent-platform/&quot;&gt;Install and Configure Apache Kafka and the Confluent Platform using Homebrew&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;!--more--&gt;
 
 &lt;p&gt;To switch from a version to another with Homebrew (here: 5.3.1), simply do:&lt;/p&gt;
 
@@ -38,8 +40,6 @@
 &lt;/ol&gt;
 
 &lt;p&gt;In this article, I’m describing Option 3.&lt;/p&gt;
-
-&lt;!--more--&gt;
 
 &lt;p&gt;Reference points:&lt;/p&gt;
 
@@ -170,13 +170,13 @@ build-error: 0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;30 days&lt;span cla
 
 &lt;p&gt;The Confluent Platform is available there and installing it is as easy as &lt;code class=&quot;highlighter-rouge&quot;&gt;brew install confluent-platform&lt;/code&gt;.&lt;/p&gt;
 
+&lt;!--more--&gt;
+
 &lt;p&gt;Unfortunately, once you’ve run that command, all the Confluent components are installed on your machine but it’s not ready to start and there’s not much documentation to help you.&lt;/p&gt;
 
 &lt;p&gt;The main advantages with using Homebrew to manage your Confluent packages is that you can have multiple versions of Confluent/Kafka installed and easily switch between them and &lt;b&gt;it uses a lot less resources than Docker&lt;/b&gt;.&lt;/p&gt;
 
 &lt;p&gt;Because of my &lt;a href=&quot;/work/&quot;&gt;work&lt;/a&gt;, I constantly have to alter my Kafka setup and try new things, so in this article, I’ll focus on starting and configuring things manually.&lt;/p&gt;
-
-&lt;!--more--&gt;
 
 &lt;p&gt;To install, run:&lt;/p&gt;
 
