@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Mar 2020 22:03:47 +0000</pubDate>
-    <lastBuildDate>Mon, 02 Mar 2020 22:03:47 +0000</lastBuildDate>
+    <pubDate>Mon, 20 Apr 2020 18:28:03 +0000</pubDate>
+    <lastBuildDate>Mon, 20 Apr 2020 18:28:03 +0000</lastBuildDate>
     <generator>Jekyll v4.0.0</generator>
     
       <item>
@@ -131,6 +131,7 @@ build-error: 0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;30 days&lt;span cla
 &lt;p&gt;From the above page, you can get the commit numbers of the previous versions. For your convenience, I am listing here some of the recent ones:&lt;/p&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;5.4.1  ⇢ &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/0a3b63e6acbc3257b804aa229900e7aed46b71b8/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/0a3b63e6acbc3257b804aa229900e7aed46b71b8/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;5.4.0  ⇢ &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/2e229452f5cb591391e6b3f649378ae6d9a1bd1f/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;5.3.1  ⇢ &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/1135feef30ba254f692bbeb9afea097b395f3634/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;5.3.0  ⇢ &lt;a href=&quot;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&quot;&gt;https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb&lt;/a&gt;&lt;/li&gt;
