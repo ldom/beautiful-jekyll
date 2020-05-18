@@ -5,8 +5,8 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 18 May 2020 22:22:18 +0000</pubDate>
-    <lastBuildDate>Mon, 18 May 2020 22:22:18 +0000</lastBuildDate>
+    <pubDate>Mon, 18 May 2020 22:29:54 +0000</pubDate>
+    <lastBuildDate>Mon, 18 May 2020 22:29:54 +0000</lastBuildDate>
     <generator>Jekyll v4.0.1</generator>
     
       <item>
@@ -37,7 +37,9 @@ Topic: test2	PartitionCount: 5	ReplicationFactor: 3	Configs: confluent.placement
 	Topic: test2	Partition: 3	Leader: 2	Replicas: 2,1,5	Isr: 2,1	Offline:
 	Topic: test2	Partition: 4	Leader: 3	Replicas: 3,2,4	Isr: 3,2	Offline:&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;To do the same programmatically with python, you have to &lt;a href=&quot;https://docs.confluent.io/current/clients/confluent-kafka-python/&quot;&gt;confluent-kafka-python&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To do the same programmatically with python, you have to use the &lt;a href=&quot;https://docs.confluent.io/current/clients/confluent-kafka-python/&quot;&gt;confluent-kafka-python&lt;/a&gt; python library.&lt;/p&gt;
+
+&lt;p&gt;Specific to MRC is that you have to pass a config dict with &lt;code class=&quot;highlighter-rouge&quot;&gt;confluent.placement.constraints&lt;/code&gt; instead of the &lt;code class=&quot;highlighter-rouge&quot;&gt;replication_factor&lt;/code&gt; argument. See line 5 below.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
