@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Create Multi-Region Topics Programmatically With Python and confluent-kafka-python</title>
+
+  <link rel="stylesheet" href="https://ldom.net/assets/css/simplicity.css">
+  <link rel="alternate" type="application/rss+xml" title="Ldom.net" href="https://ldom.net/feed.xml">
+  <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <link type="text/plain" rel="author" href="https://ldom.net/humans.txt">
+
+  <!-- Search Engine Optimization -->
+<meta name="description" content="Confluent Platform 5.4 introduced Multi-Region Clusters (MRC). MRC adds numerous cool features such as Follower-Fetching or asynchronous Observers.
+
+This article explains how to create topics with replicas and observers programmatically using python.
+
+More details on MRC clusters: https://docs.confluent.io/current/multi-dc-deployments/multi-region.html">
+
+
+
+
+
+<link rel="canonical" href="https://ldom.net/create-mrc-topics-programmatically-with-python/">
+
+
+    <!-- Facebook Open Graph -->
+  <meta property="og:title" content="Create Multi-Region Topics Programmatically With Python and confluent-kafka-python">
+  <meta property="og:description" content="Confluent Platform 5.4 introduced Multi-Region Clusters (MRC). MRC adds numerous cool features such as Follower-Fetching or asynchronous Observers.
+
+This article explains how to create topics with replicas and observers programmatically using python.
+
+More details on MRC clusters: https://docs.confluent.io/current/multi-dc-deployments/multi-region.html">
+  <meta property="og:locale" content="en_EN">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ldom.net/create-mrc-topics-programmatically-with-python/">
+  <meta property="og:site_name" content="Ldom.net">
+  <meta property="og:image" content="https://ldom.net/images/headers/anthony-delanoix-btQt9i0Krag-unsplash.jpg">
+  
+
+  
+    <!-- More › https://dev.twitter.com/cards/overview -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="ldom">
+<meta name="twitter:creator" content="ldom">
+<meta name="twitter:title" content="Create Multi-Region Topics Programmatically With Python and confluent-kafka-python">
+<meta name="twitter:description" content="Confluent Platform 5.4 introduced Multi-Region Clusters (MRC). MRC adds numerous cool features such as Follower-Fetching or asynchronous Observers.
+
+This article explains how to create topics with replicas and observers programmatically using python.
+
+More details on MRC clusters: https://docs.confluent.io/current/multi-dc-deployments/multi-region.html">
+<meta name="twitter:image" content="https://ldom.net/images/headers/anthony-delanoix-btQt9i0Krag-unsplash.jpg">
+
+  
+
+  
+  <link rel="icon" sizes="32x32" href="https://ldom.net/assets/img/favicon-32x32.png" />
+  <link rel="icon" sizes="192x192" href="https://ldom.net/assets/img/touch-icon-192x192.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://ldom.net/assets/img/apple-touch-icon-180x180-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://ldom.net/assets/img/apple-touch-icon-152x152-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ldom.net/assets/img/apple-touch-icon-144x144-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://ldom.net/assets/img/apple-touch-icon-120x120-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://ldom.net/assets/img/apple-touch-icon-114x114-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://ldom.net/assets/img/apple-touch-icon-76x76-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://ldom.net/assets/img/apple-touch-icon-72x72-precomposed.png" />
+  <link rel="apple-touch-icon-precomposed" href="https://ldom.net/assets/img/apple-touch-icon-precomposed.png" />
+  <meta name="msapplication-TileImage" content="https://ldom.net/assets/img/msapplication_tileimage.png" />
+  <meta name="msapplication-TileColor" content="#fabb00" />
+
+  
+
+</head>
+<body id="top-of-page" class="">
+
+
+
+<nav id="tnav" class="tnav-horizontal">
+  <ul class="tnav-list">
+
+    <li id="tnav-logo" class="tnav-item"><a href="https://ldom.net/" accesskey="1">Ldom.net</a></li>
+
+    <li id="tnav-search" class="tnav-item"><a href="https://ldom.net/search/"><svg class="nav-icon" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg></a></li>
+    <li id="tnav-work" class="tnav-item"><a href="https://ldom.net/work/">work</a></li>
+    <li id="tnav-leisure" class="tnav-item"><a href="https://ldom.net/leisure/">leisure</a></li>
+
+  </ul>
+</nav>
+
+
+
+
+
+<main role="main" id="content" class="row">
+  <div class="medium-8 medium-centered columns">
+    <article itemscope itemtype="http://schema.org/Article">
+      <meta content="" itemprop="inLanguage" />
+      <header>
+
+        
+        
+
+
+        
+
+
+
+        
+        <figure>
+          <img src="https://ldom.net/images/headers/anthony-delanoix-btQt9i0Krag-unsplash.jpg" alt="Create Multi-Region Topics Programmatically With Python and confluent-kafka-python" itemprop="image">
+
+          
+          <figcaption>
+            <a href="https://unsplash.com/@anthonydelanoix" target="_blank">Photo of Prague by Anthony Delanoix</a>
+          </figcaption>
+          
+        </figure>
+        
+
+
+        
+
+
+        <h1 itemprop="name headline">Create Multi-Region Topics Programmatically With Python and confluent-kafka-python</h1>
+      </header>
+
+
+      <div class="main-content" itemprop="articleSection">
+        
+        <p>Confluent Platform 5.4 introduced Multi-Region Clusters (MRC). MRC adds numerous cool features such as Follower-Fetching or asynchronous Observers.</p>
+
+<p>This article explains how to create topics with replicas and observers programmatically using python.</p>
+
+<p>More details on MRC clusters: <a href="https://docs.confluent.io/current/multi-dc-deployments/multi-region.html">https://docs.confluent.io/current/multi-dc-deployments/multi-region.html</a></p>
+
+<!--more-->
+
+<p>To create a topic with replicas and (asynchronous) observers, you have to pass replica and observers placement details in the form of a JSON object.</p>
+
+<p>Here is an example using the command-line:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">cat </span>placement.json
+<span class="o">{</span><span class="s2">"version"</span>:1,<span class="s2">"replicas"</span>:[<span class="o">{</span><span class="s2">"count"</span>:2,<span class="s2">"constraints"</span>:<span class="o">{</span><span class="s2">"rack"</span>:<span class="s2">"east"</span><span class="o">}}]</span>,<span class="s2">"observers"</span>:[<span class="o">{</span><span class="s2">"count"</span>:1,<span class="s2">"constraints"</span>:<span class="o">{</span><span class="s2">"rack"</span>:<span class="s2">"west"</span><span class="o">}}]}</span>
+<span class="err">$</span>
+<span class="nv">$ </span>kafka-topics  <span class="nt">--create</span> <span class="nt">--bootstrap-server</span> &lt;IP address&gt;:9092 <span class="nt">--topic</span> test2 <span class="nt">--partitions</span> 5 <span class="nt">--replica-placement</span> placement.json
+<span class="err">$</span>
+<span class="nv">$ </span>kafka-topics <span class="nt">--zookeeper</span> &lt;IP address&gt;:2181 <span class="nt">--describe</span> <span class="nt">--topic</span> test2
+
+Topic: test2	PartitionCount: 5	ReplicationFactor: 3	Configs: confluent.placement.constraints<span class="o">={</span><span class="s2">"version"</span>:1,<span class="s2">"replicas"</span>:[<span class="o">{</span><span class="s2">"count"</span>:2,<span class="s2">"constraints"</span>:<span class="o">{</span><span class="s2">"rack"</span>:<span class="s2">"east"</span><span class="o">}}]</span>,<span class="s2">"observers"</span>:[<span class="o">{</span><span class="s2">"count"</span>:1,<span class="s2">"constraints"</span>:<span class="o">{</span><span class="s2">"rack"</span>:<span class="s2">"west"</span><span class="o">}}]}</span>
+	Topic: test2	Partition: 0	Leader: 2	Replicas: 2,3,4	Isr: 2,3	Offline:
+	Topic: test2	Partition: 1	Leader: 3	Replicas: 3,1,5	Isr: 3,1	Offline:
+	Topic: test2	Partition: 2	Leader: 1	Replicas: 1,2,4	Isr: 1,2	Offline:
+	Topic: test2	Partition: 3	Leader: 2	Replicas: 2,1,5	Isr: 2,1	Offline:
+	Topic: test2	Partition: 4	Leader: 3	Replicas: 3,2,4	Isr: 3,2	Offline:</code></pre></figure>
+
+<p>To do the same programmatically with python, you have to <a href="https://docs.confluent.io/current/clients/confluent-kafka-python/">confluent-kafka-python</a>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="kn">from</span> <span class="nn">confluent_kafka.admin</span> <span class="kn">import</span> <span class="n">AdminClient</span><span class="p">,</span> <span class="n">NewTopic</span>
+
+<span class="n">placement</span> <span class="o">=</span> <span class="s">"{</span><span class="se">\"</span><span class="s">version</span><span class="se">\"</span><span class="s">:1,</span><span class="se">\"</span><span class="s">replicas</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">count</span><span class="se">\"</span><span class="s">:2,</span><span class="se">\"</span><span class="s">constraints</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">rack</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">east</span><span class="se">\"</span><span class="s">}}],</span><span class="se">\"</span><span class="s">observers</span><span class="se">\"</span><span class="s">:[{</span><span class="se">\"</span><span class="s">count</span><span class="se">\"</span><span class="s">:1,</span><span class="se">\"</span><span class="s">constraints</span><span class="se">\"</span><span class="s">:{</span><span class="se">\"</span><span class="s">rack</span><span class="se">\"</span><span class="s">:</span><span class="se">\"</span><span class="s">west</span><span class="se">\"</span><span class="s">}}]}"</span>
+
+<span class="n">new_topic</span> <span class="o">=</span> <span class="p">[</span><span class="n">NewTopic</span><span class="p">(</span><span class="s">"test1"</span><span class="p">,</span> <span class="n">num_partitions</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="p">{</span><span class="s">'confluent.placement.constraints'</span><span class="p">:</span> <span class="n">placement</span><span class="p">})]</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">AdminClient</span><span class="p">({</span><span class="s">'bootstrap.servers'</span><span class="p">:</span> <span class="s">'&lt;IP address&gt;:9092'</span><span class="p">})</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">create_topics</span><span class="p">(</span><span class="n">new_topic</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">topic</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">res</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Topic {} created"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">topic</span><span class="p">))</span>
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Failed to create topic {}: {}"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>That’s it!</p>
+
+
+
+        
+
+      </div><!-- /.content -->
+
+
+      
+
+
+      
+      <footer>
+        <p><small>
+          Written by Ldom // 
+          
+          <time datetime="2020-05-18" itemprop="datePublished">2020-05-18</time>
+        </small></p>
+      </footer>
+      
+
+
+      <div id="pagination">
+  
+    <a class="prev" href="https://ldom.net/homebrew-switch-confluent-versions/" title="Switch Between Apache Kafka and Confluent Versions with Homebrew"><span class="skip">&lsaquo;</span><span>»Switch Between Apache Kafka and Confluent Versions with Homebrew«</span></a>
+  
+  
+</div><!-- /#pagination -->
+
+    </article>
+  </div>
+</main><!-- /.row -->
+
+<footer id="footer" class="row">
+  <nav id="navigation-footer" class="small-12 columns">
+    <ul class="inline-list">
+      
+
+
+
+
+
+  <li class="social-media-icon"><a href="https://twitter.com/ldom" target="_blank" title="Follow me at Twitter"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M679 239s-21 34-55 57c7 156-107 329-314 329-103 0-169-50-169-50s81 17 163-45c-83-5-103-77-103-77s23 6 50-2c-93-23-89-110-89-110s23 14 50 14c-84-65-34-148-34-148s76 107 228 116c-22-121 117-177 188-101 37-6 71-27 71-27s-12 41-49 61c30-2 63-17 63-17z"/>
+</svg>
+</a></li>
+
+
+
+
+
+
+
+  <li class="social-media-icon"><a href="https://www.instagram.com/ldom" target="_blank" title="Follow me at Instagram"><svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <path d="M150 400c0-119 0-166 42-208s88-42 208-42 166 0 208 42 42 89 42 208 0 166-42 208-88 42-208 42-166 0-208-42-42-89-42-208zm455 0c0-114 0-148-29-176-29-29-62-29-176-29s-148 0-176 29c-29 29-29 62-29 176s0 148 29 176c29 29 62 29 176 29s148 0 176-29c29-29 29-62 29-176zM400 272a128 128 0 1 1 0 256 128 128 0 0 1 0-256zm0 211c46 0 83-37 83-83s-37-83-83-83-83 37-83 83 37 83 83 83zm163-216c0 16-13 30-30 30-16 0-30-14-30-30 0-17 14-30 30-30 17 0 30 13 30 30z"/>
+</svg>
+</a></li>
+
+
+
+
+
+
+      
+        
+      <li><a href="https://ldom.net/about/">about</a></li>
+      
+        
+      <li><a href="https://ldom.net/search/">search</a></li>
+      
+      <li id="up-to-top"><a href="#top-of-page">›</a></li>
+    </ul>
+  </nav>
+</footer>
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-159497805-1', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+</body>
+</html>
