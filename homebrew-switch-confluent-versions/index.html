@@ -133,19 +133,19 @@
 
 <p>This is great but it relies on the fact that the version you want to switch to is currently installed locally in your cellar. If it’s the case, Homebrew does the switch instantly by updating symlinks.</p>
 
-<p>There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the <code class="highlighter-rouge">HOMEBREW_NO_INSTALL_CLEANUP</code> envvar.</p>
+<p>There are several ways to ensure that you have all the versions that you want in your local computer. At some point, they will collide with the fact that Homebrew does a cleanup every 30 days or each time you run an upgrade, unless you the <code class="language-plaintext highlighter-rouge">HOMEBREW_NO_INSTALL_CLEANUP</code> envvar.</p>
 
 <p>You can:</p>
 
 <ol>
   <li>
-    <p>Use <code class="highlighter-rouge">HOMEBREW_NO_INSTALL_CLEANUP</code> when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, <code class="highlighter-rouge">brew cleanup</code> will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.</p>
+    <p>Use <code class="language-plaintext highlighter-rouge">HOMEBREW_NO_INSTALL_CLEANUP</code> when upgrading all Homebrew packages to keep the previous versions on your disk. Unless it is set, <code class="language-plaintext highlighter-rouge">brew cleanup</code> will be run for the formula that you’re upgrading or, every 30 days, for all formulae. It will fill your disk quite quickly if you use a lot of packages and unless you’re super careful, you’ll loose your previous versions sooner or later.</p>
   </li>
   <li>
-    <p>Build you own keg and feed it with the versions that you want to keep using <code class="highlighter-rouge">brew extract</code>. Too much work IMHO.</p>
+    <p>Build you own keg and feed it with the versions that you want to keep using <code class="language-plaintext highlighter-rouge">brew extract</code>. Too much work IMHO.</p>
   </li>
   <li>
-    <p>Use <code class="highlighter-rouge">HOMEBREW_NO_INSTALL_CLEANUP</code> when upgrading <code class="highlighter-rouge">confluent-platform</code>. If the version you want is gone, restore it using <code class="highlighter-rouge">brew install</code> referencing the <b>specific commit number</b>. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)</p>
+    <p>Use <code class="language-plaintext highlighter-rouge">HOMEBREW_NO_INSTALL_CLEANUP</code> when upgrading <code class="language-plaintext highlighter-rouge">confluent-platform</code>. If the version you want is gone, restore it using <code class="language-plaintext highlighter-rouge">brew install</code> referencing the <b>specific commit number</b>. (Also remember to backup the Confluent/Kafka config files in a folder outside of Homebrew.)</p>
   </li>
 </ol>
 
@@ -185,7 +185,7 @@ confluent-platform 5.3.1 -&gt; 5.4.0
 <span class="o">==&gt;</span> Checking <span class="k">for </span>dependents of upgraded formulae...
 <span class="o">==&gt;</span> No dependents found!</code></pre></figure>
 
-<p>(To set the option permanently and for all the Homebrew packages, you can add <code class="highlighter-rouge">export HOMEBREW_NO_INSTALL_CLEANUP=1</code> to your bash profile but I don’t recommend it.)</p>
+<p>(To set the option permanently and for all the Homebrew packages, you can add <code class="language-plaintext highlighter-rouge">export HOMEBREW_NO_INSTALL_CLEANUP=1</code> to your bash profile but I don’t recommend it.)</p>
 
 <p>To check what you have locally (in this example, see line 7 and 9, I have 5.3.1 and 5.4.0):</p>
 
@@ -235,7 +235,7 @@ build-error: 0 <span class="o">(</span>30 days<span class="o">)</span>
 <p>If you want to re-install a previous version:</p>
 
 <ol>
-  <li>Get the commit number at <a href="https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb">https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb</a>. If it says “this commit history is taking too long to generate”, then clone <code class="highlighter-rouge">homebrew-core</code> and check the commits there with <code class="highlighter-rouge">git log master -- Formula/confluent-platform.rb</code>.</li>
+  <li>Get the commit number at <a href="https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb">https://github.com/Homebrew/homebrew-core/commits/master/Formula/confluent-platform.rb</a>. If it says “this commit history is taking too long to generate”, then clone <code class="language-plaintext highlighter-rouge">homebrew-core</code> and check the commits there with <code class="language-plaintext highlighter-rouge">git log master -- Formula/confluent-platform.rb</code>.</li>
 </ol>
 
 <p>From the above page, you can get the commit numbers of the previous versions. For your convenience, I am listing here some of the recent ones:</p>
@@ -247,7 +247,7 @@ build-error: 0 <span class="o">(</span>30 days<span class="o">)</span>
   <li>5.3.0  ⇢ <a href="https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb">https://raw.githubusercontent.com/Homebrew/homebrew-core/6a76b682ff4969afec52cc34be58315cee3271fe/Formula/confluent-platform.rb</a></li>
 </ul>
 
-<p>For prior versions, it’s a little more complicated as the formula was named <code class="highlighter-rouge">confluent-oss</code> before.</p>
+<p>For prior versions, it’s a little more complicated as the formula was named <code class="language-plaintext highlighter-rouge">confluent-oss</code> before.</p>
 
 <ol>
   <li>Reference the commit number in the install command, for example to install 5.3.0:</li>
@@ -260,7 +260,7 @@ build-error: 0 <span class="o">(</span>30 days<span class="o">)</span>
 <p>One last thing:</p>
 <ul>
   <li>Don’t forget to <b>stop running instances</b> before upgrade/switch operations. (Ctrl-C on your terminals…)</li>
-  <li>To fully <b>reset your data</b> (delete your topics and log files) between version switches, find where the topics are stored (check the <code class="highlighter-rouge">log.dirs</code> config property, by default it’s in <code class="highlighter-rouge">/tmp/kafka-logs</code>):</li>
+  <li>To fully <b>reset your data</b> (delete your topics and log files) between version switches, find where the topics are stored (check the <code class="language-plaintext highlighter-rouge">log.dirs</code> config property, by default it’s in <code class="language-plaintext highlighter-rouge">/tmp/kafka-logs</code>):</li>
 </ul>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">rm</span> <span class="nt">-rf</span> /tmp/kafka-logs

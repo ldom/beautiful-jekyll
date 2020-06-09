@@ -155,7 +155,7 @@ Topic: test2	PartitionCount: 5	ReplicationFactor: 3	Configs: confluent.placement
 
 <p>To do the same programmatically with python, you have to use the <a href="https://docs.confluent.io/current/clients/confluent-kafka-python/">confluent-kafka-python</a> python library.</p>
 
-<p>Specific to MRC is that you have to pass a config dict with <code class="highlighter-rouge">confluent.placement.constraints</code> instead of the <code class="highlighter-rouge">replication_factor</code> argument. See line 5 below.</p>
+<p>Specific to MRC is that you have to pass a config dict with <code class="language-plaintext highlighter-rouge">confluent.placement.constraints</code> instead of the <code class="language-plaintext highlighter-rouge">replication_factor</code> argument. See line 5 below.</p>
 
 <figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2

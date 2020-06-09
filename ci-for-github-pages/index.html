@@ -171,7 +171,7 @@ As you can see Page build failed. is not very useful. After hours trying to find
         
         <p>Github pages is a nice and free way to host a web site with static pages. It also supports <a href="https://jekyllrb.com/">Jekyll</a> themes, which is great when you want to make things easier to edit and post.</p>
 
-<p>Github pages has a bunch of themes ready to be used and they also support any Jekyll theme hosted on a public repository on github.com. You just have to use <code class="highlighter-rouge">remote_theme</code> instead of <code class="highlighter-rouge">theme</code> in the <code class="highlighter-rouge">__config.yml</code> file.</p>
+<p>Github pages has a bunch of themes ready to be used and they also support any Jekyll theme hosted on a public repository on github.com. You just have to use <code class="language-plaintext highlighter-rouge">remote_theme</code> instead of <code class="language-plaintext highlighter-rouge">theme</code> in the <code class="language-plaintext highlighter-rouge">__config.yml</code> file.</p>
 
 <p>However, sometimes the theme that you have chosen builds without errors locally but doesn’t build when Github tries to do it. And then the error message is everything but helpful.</p>
 
@@ -187,11 +187,11 @@ Configuration file: _config.yml
 
 Page build failed. For more information, see https://help.github.com/en/articles/troubleshooting-github-pages-builds.</code></pre></figure>
 
-<p>As you can see <code class="highlighter-rouge">Page build failed.</code> is not very useful. After hours trying to find the potential errors that they mention in the troubleshooting page, I gave up and went for a different solution.</p>
+<p>As you can see <code class="language-plaintext highlighter-rouge">Page build failed.</code> is not very useful. After hours trying to find the potential errors that they mention in the troubleshooting page, I gave up and went for a different solution.</p>
 
 <!--more-->
 
-<p>The solution is to use a second repository (in my case: <code class="highlighter-rouge">ldom-src</code>) to host the source files with the theme. These are the files you were putting on the original repository for the github pages (in my case: <code class="highlighter-rouge">ldom</code>). Then setup a CI server (Continuous Integration) to build the static files every time you push to the <code class="highlighter-rouge">-src</code> repository and push the static file to the github pages repository.</p>
+<p>The solution is to use a second repository (in my case: <code class="language-plaintext highlighter-rouge">ldom-src</code>) to host the source files with the theme. These are the files you were putting on the original repository for the github pages (in my case: <code class="language-plaintext highlighter-rouge">ldom</code>). Then setup a CI server (Continuous Integration) to build the static files every time you push to the <code class="language-plaintext highlighter-rouge">-src</code> repository and push the static file to the github pages repository.</p>
 
 <p>Of course, you can put together the CI server yourself, using Jenkins for example, but it’s easier when you don’t have to manage a server for that. CodeShip is a CI service (I have no affiliation with them) that offers a free account limited to 100 builds per month (which is plenty for a personal site that you’ll update 30 times max per month).</p>
 
@@ -241,8 +241,8 @@ git push origin master
 
 <p>In the Environment tab, create 2 environment variables (to be used in the script above):</p>
 <ul>
-  <li><code class="highlighter-rouge">REMOTE_REPOSITORY</code>: put the address of the destination repository, the one for the static Github pages, eg. <code class="highlighter-rouge">git@github.com:ldom/ldom.git</code></li>
-  <li><code class="highlighter-rouge">REMOTE_BRANCH</code>: put <code class="highlighter-rouge">master</code></li>
+  <li><code class="language-plaintext highlighter-rouge">REMOTE_REPOSITORY</code>: put the address of the destination repository, the one for the static Github pages, eg. <code class="language-plaintext highlighter-rouge">git@github.com:ldom/ldom.git</code></li>
+  <li><code class="language-plaintext highlighter-rouge">REMOTE_BRANCH</code>: put <code class="language-plaintext highlighter-rouge">master</code></li>
 </ul>
 
 <ol>
@@ -260,7 +260,7 @@ It involves:</p>
   <li>At last, you need to put that key (that has to be copied from General tab of the Project Settings in CodeShip) as a new key on the “Machine User” github account. (Note that if you don’t remove it first from the Deploy settings of the destination repository, you won’t be able to add that key to the “Machine User” keys).</li>
 </ul>
 
-<p>Once all of this is done, you’ll enjoy a full automated (and free) system where you just have to push to the <code class="highlighter-rouge">-src</code> repository for everything to be built and deployed to Github pages!</p>
+<p>Once all of this is done, you’ll enjoy a full automated (and free) system where you just have to push to the <code class="language-plaintext highlighter-rouge">-src</code> repository for everything to be built and deployed to Github pages!</p>
 
 
 

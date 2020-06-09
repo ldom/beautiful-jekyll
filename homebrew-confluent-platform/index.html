@@ -123,7 +123,7 @@ The Confluent Platform is available there and installing it is as easy as brew i
         
         <p>If you’re on a Mac, among the many ways to install Apache Kafka and the Confluent Platform, there is <a href="https://brew.sh">Homebrew</a>.</p>
 
-<p>The Confluent Platform is available there and installing it is as easy as <code class="highlighter-rouge">brew install confluent-platform</code>.</p>
+<p>The Confluent Platform is available there and installing it is as easy as <code class="language-plaintext highlighter-rouge">brew install confluent-platform</code>.</p>
 
 <!--more-->
 
@@ -137,7 +137,7 @@ The Confluent Platform is available there and installing it is as easy as brew i
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash">brew <span class="nb">install </span>confluent-platform</code></pre></figure>
 
-<p>Once this is done, your install is not fully functional. You also have to create the appropriate <code class="highlighter-rouge">/var/log</code> folder:</p>
+<p>Once this is done, your install is not fully functional. You also have to create the appropriate <code class="language-plaintext highlighter-rouge">/var/log</code> folder:</p>
 
 <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">sudo mkdir</span> <span class="nt">-p</span> /var/log/kafka
 <span class="nb">sudo chown</span> <span class="nt">-R</span> <span class="si">$(</span><span class="nb">whoami</span><span class="si">)</span> /var/log/kafka</code></pre></figure>
@@ -146,13 +146,13 @@ The Confluent Platform is available there and installing it is as easy as brew i
 
 <p>If you want to modify the configuration first, edit those files:</p>
 
-<p>For zookeeper: <code class="highlighter-rouge">/usr/local/etc/kafka/zookeeper.properties</code></p>
+<p>For zookeeper: <code class="language-plaintext highlighter-rouge">/usr/local/etc/kafka/zookeeper.properties</code></p>
 
-<p>For the broker: <code class="highlighter-rouge">/usr/local/etc/kafka/server.properties</code></p>
+<p>For the broker: <code class="language-plaintext highlighter-rouge">/usr/local/etc/kafka/server.properties</code></p>
 
-<p>For connect: <code class="highlighter-rouge">/usr/local/etc/kafka/connect-distributed.properties</code></p>
+<p>For connect: <code class="language-plaintext highlighter-rouge">/usr/local/etc/kafka/connect-distributed.properties</code></p>
 
-<p>Note that <code class="highlighter-rouge">/usr/local/etc/kafka</code> points to <code class="highlighter-rouge">/usr/local/Cellar/confluent-platform/5.3.1/etc/kafka/</code> if you’re using 5.3.1.</p>
+<p>Note that <code class="language-plaintext highlighter-rouge">/usr/local/etc/kafka</code> points to <code class="language-plaintext highlighter-rouge">/usr/local/Cellar/confluent-platform/5.3.1/etc/kafka/</code> if you’re using 5.3.1.</p>
 
 <p>When you’re happy with the config files, open up a bunch of <a href="https://iterm2.com/">terminal windows</a> and run the various components:</p>
 
@@ -201,7 +201,7 @@ laurent
 <span class="o">&gt;</span>
 <span class="err">$</span></code></pre></figure>
 
-<p>If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (at least, add a <code class="highlighter-rouge">broker-id</code> into the broker config and point the brokers to separate <code class="highlighter-rouge">log.dirs</code> folders) and run the above commands into additional terminal windows pointing to separate config files.</p>
+<p>If you want more than one zookeeper and one broker (which is enough for many local development tasks or configuration tests), you have to duplicate the configuration files, alter them (at least, add a <code class="language-plaintext highlighter-rouge">broker-id</code> into the broker config and point the brokers to separate <code class="language-plaintext highlighter-rouge">log.dirs</code> folders) and run the above commands into additional terminal windows pointing to separate config files.</p>
 
 <p><img src="/images/tech/homebrew-confluent.png" alt="iTerm galore" /></p>
 
