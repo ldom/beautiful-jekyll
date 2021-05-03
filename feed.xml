@@ -5,9 +5,9 @@
     <description></description>
     <link>https://ldom.net/</link>
     <atom:link href="https://ldom.net/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 07 Dec 2020 00:59:33 +0000</pubDate>
-    <lastBuildDate>Mon, 07 Dec 2020 00:59:33 +0000</lastBuildDate>
-    <generator>Jekyll v4.1.1</generator>
+    <pubDate>Mon, 03 May 2021 16:35:41 +0000</pubDate>
+    <lastBuildDate>Mon, 03 May 2021 16:35:41 +0000</lastBuildDate>
+    <generator>Jekyll v4.2.0</generator>
     
       <item>
         <title>Create Multi-Region Topics Programmatically With Python and confluent-kafka-python</title>
@@ -37,7 +37,7 @@ Topic: test2	PartitionCount: 5	ReplicationFactor: 3	Configs: confluent.placement
 	Topic: test2	Partition: 3	Leader: 2	Replicas: 2,1,5	Isr: 2,1	Offline:
 	Topic: test2	Partition: 4	Leader: 3	Replicas: 3,2,4	Isr: 3,2	Offline:&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;To do the same programmatically with python, you have to use the &lt;a href=&quot;https://docs.confluent.io/current/clients/confluent-kafka-python/&quot;&gt;confluent-kafka-python&lt;/a&gt; python library.&lt;/p&gt;
+&lt;p&gt;To do the same programmatically with python, you can use the &lt;a href=&quot;https://docs.confluent.io/current/clients/confluent-kafka-python/&quot;&gt;confluent-kafka-python&lt;/a&gt; python library.&lt;/p&gt;
 
 &lt;p&gt;Specific to MRC is that you have to pass a config dict with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;confluent.placement.constraints&lt;/code&gt; instead of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;replication_factor&lt;/code&gt; argument. See line 5 below.&lt;/p&gt;
 
@@ -89,6 +89,10 @@ Topic: test2	PartitionCount: 5	ReplicationFactor: 3	Configs: confluent.placement
 &lt;p&gt;(This is kinda part 2 of &lt;a href=&quot;/homebrew-confluent-platform/&quot;&gt;Install and Configure Apache Kafka and the Confluent Platform using Homebrew&lt;/a&gt;.)&lt;/p&gt;
 
 &lt;!--more--&gt;
+
+&lt;p&gt;2021 Update: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;brew switch&lt;/code&gt; is now deprecated! I’ll be redirecting my efforts to using the Confluent CLI.&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;p&gt;To switch from a version to another with Homebrew (here: 5.3.1), simply do:&lt;/p&gt;
 
